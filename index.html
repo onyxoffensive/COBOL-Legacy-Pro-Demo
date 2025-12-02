@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COBOL Legacy Catalyst - Free Demo Scanner | Kevlar Veil</title>
+    <meta name="description" content="Free COBOL security scanner demo by COBOL Legacy Catalyst. Test your legacy banking code for vulnerabilities. Open-source demo version.">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+    <div class="max-w-5xl mx-auto p-6">
+        <!-- Header -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-900 mb-2">COBOL Legacy Catalyst</h1>
+                    <p class="text-gray-600">Free Demo Scanner - by Kevlar Veil</p>
+                </div>
+                <a href="https://kevlarveil.com" target="_blank" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition">
+                    Enterprise Version
+                </a>
+            </div>
+        </div>
+
+        <!-- Alert Banner -->
+        <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-6 rounded">
+            <div class="flex items-center">
+                <div class="flex-shrink-0">
+                    <svg class="h-5 w-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+                    </svg>
+                </div>
+                <div class="ml-3">
+                    <p class="text-sm text-red-700">
+                        <strong>Free Demo:</strong> This scanner detects 5 basic vulnerabilities. 
+                        Enterprise version includes 50+ patterns, compliance mapping, and mainframe integration.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sample Selector -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h2 class="text-xl font-bold text-gray-900 mb-4">Load Sample COBOL Code</h2>
+            <select id="sampleSelect" onchange="loadSample()" class="w-full p-3 border border-gray-300 rounded-lg mb-2">
+                <option value="vulnerable">Vulnerable Bank Transfer System</option>
+                <option value="atm">ATM Withdrawal Module</option>
+                <option value="secure">Secure Module (Clean Code)</option>
+            </select>
+            <p id="sampleDesc" class="text-sm text-gray-600"></p>
+        </div>
+
+        <!-- Code Editor -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-bold text-gray-900">COBOL Code</h2>
+                <button onclick="checkAndRunScan()" class="px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg transition">
+                    🔍 Scan for Vulnerabilities
+                </button>
+            </div>
+            <textarea 
+                id="cobolCode"
+                class="w-full h-96 p-4 font-mono text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                placeholder="Paste COBOL code here or select a sample above..."
+            ></textarea>
+        </div>
+
+        <!-- Email Gate Modal (Shows when trying to scan) -->
+        <div id="demoEmailModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+            <div class="bg-white rounded-lg shadow-2xl max-w-md w-full">
+                <div class="p-6">
+                    <form onsubmit="unlockDemoScanner(event)">
+                        <svg class="w-16 h-16 text-blue-600 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                        </svg>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2 text-center">Unlock Free Demo</h3>
+                        <p class="text-sm text-gray-600 mb-4 text-center">Enter your details to run scans</p>
+                        
+                        <input 
+                            type="text" 
+                            id="demoName" 
+                            name="name"
+                            required
+                            placeholder="Your full name"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg mb-3 focus:ring-2 focus:ring-blue-500"
+                        />
+                        
+                        <input 
+                            type="email" 
+                            id="demoEmail" 
+                            name="email"
+                            required
+                            placeholder="Your work email"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg mb-3 focus:ring-2 focus:ring-blue-500"
+                        />
+                        
+                        <input 
+                            type="text" 
+                            id="demoPosition" 
+                            name="position"
+                            required
+                            placeholder="Job title (e.g., Developer, Security Analyst)"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg mb-4 focus:ring-2 focus:ring-blue-500"
+                        />
+                        
+                        <button 
+                            type="submit"
+                            class="w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition mb-3"
+                        >
+                            Access Free Demo
+                        </button>
+                        
+                        <button 
+                            type="button"
+                            onclick="closeDemoModal()"
+                            class="w-full px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold rounded-lg transition"
+                        >
+                            Cancel
+                        </button>
+                        
+                        <p class="text-xs text-gray-600 mt-3 text-center">
+                            No credit card required. Instant access.
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results -->
+        <div id="results" class="hidden"></div>
+
+        <!-- About Section -->
+        <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
+            <h3 class="text-lg font-bold text-gray-900 mb-3">About This Demo</h3>
+            <p class="text-gray-700 mb-3">
+                This is a simplified open-source demo that detects 5 common COBOL vulnerabilities:
+            </p>
+            <ul class="list-disc list-inside text-gray-700 space-y-1 mb-4">
+                <li>SQL Injection (dynamic query construction)</li>
+                <li>Hardcoded Credentials</li>
+                <li>Sensitive Data Exposure (PII/PCI)</li>
+                <li>Unencrypted File Storage</li>
+                <li>Missing Input Validation</li>
+            </ul>
+            <p class="text-gray-700 mb-3">
+                <strong>Enterprise Version includes:</strong> 50+ vulnerability patterns, PCI DSS/SOC 2 compliance mapping, 
+                mainframe integration, remediation guidance, and continuous monitoring.
+            </p>
+            <a href="https://kevlarveil.com" target="_blank" class="text-blue-600 hover:text-blue-700 font-semibold">
+                Learn more about Enterprise version →
+            </a>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center text-gray-600 text-sm">
+            <p class="text-lg font-semibold text-gray-900 mb-2">COBOL Legacy Catalyst</p>
+            <p>by <a href="https://kevlarveil.com" class="text-blue-600 hover:text-blue-700 font-semibold">Kevlar Veil</a></p>
+            <p class="mt-2">Protecting legacy banking systems from modern threats</p>
+            <p class="mt-2">
+                <a href="https://github.com/yourusername/cobol-scanner" class="text-blue-600 hover:text-blue-700">View on GitHub</a> | 
+                <a href="https://kevlarveil.com" class="text-blue-600 hover:text-blue-700">Enterprise Version</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function closeDemoModal() {
+            document.getElementById('demoEmailModal').classList.add('hidden');
+        }
+
+        function checkAndRunScan() {
+            const unlocked = localStorage.getItem('demoUnlocked');
+            
+            if (unlocked !== 'true') {
+                // Show modal
+                document.getElementById('demoEmailModal').classList.remove('hidden');
+                return;
+            }
+            
+            // Run scan
+            runScan();
+        }
+
+        function unlockDemoScanner(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('demoName').value;
+            const email = document.getElementById('demoEmail').value;
+            const position = document.getElementById('demoPosition').value;
+            
+            if (!email || !email.includes('@')) {
+                alert('Please enter a valid email address');
+                return;
+            }
+            
+            if (!name || !position) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            // Send data to Formspree (Demo Scanner Form)
+            fetch('https://formspree.io/f/mblnyqlb', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    position: position,
+                    _subject: 'New Demo Scanner Access Request',
+                    source: 'GitHub Demo Scanner'
+                })
+            }).then(response => {
+                if (response.ok) {
+                    // Store info locally
+                    localStorage.setItem('demoUnlocked', 'true');
+                    localStorage.setItem('demoUserEmail', email);
+
+                    // Hide modal, run scan
+                    document.getElementById('demoEmailModal').classList.add('hidden');
+                    
+                    // Run the scan they wanted
+                    runScan();
+                } else {
+                    alert('Error submitting form. Please try again.');
+                }
+            }).catch(error => {
+                console.error('Formspree error:', error);
+                // Still unlock for better UX
+                localStorage.setItem('demoUnlocked', 'true');
+                localStorage.setItem('demoUserEmail', email);
+                document.getElementById('demoEmailModal').classList.add('hidden');
+                runScan();
+            });
+        }
+        const samples = {
+            vulnerable: {
+                desc: 'Banking transfer with SQL injection, hardcoded credentials, and PII exposure',
+                code: `       IDENTIFICATION DIVISION.
+       PROGRAM-ID. BANK-TRANSFER.
+       
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       01 USER-INPUT PIC X(50).
+       01 SQL-QUERY PIC X(200).
+       01 PASSWORD PIC X(20).
+       01 SSN PIC 9(9).
+       
+       PROCEDURE DIVISION.
+       MAIN-LOGIC.
+           ACCEPT USER-INPUT FROM CONSOLE.
+           
+           STRING "SELECT * FROM ACCOUNTS WHERE ID='" 
+                  USER-INPUT "'" INTO SQL-QUERY.
+           EXEC SQL
+               EXECUTE IMMEDIATE :SQL-QUERY
+           END-EXEC.
+           
+           MOVE "admin123" TO PASSWORD.
+           DISPLAY "Account SSN: " SSN.
+           
+           OPEN OUTPUT ACCOUNT-FILE.
+           WRITE ACCOUNT-RECORD.
+           
+           STOP RUN.`
+            },
+            atm: {
+                desc: 'ATM system with hardcoded credentials and missing input validation',
+                code: `       IDENTIFICATION DIVISION.
+       PROGRAM-ID. ATM-WITHDRAW.
+       
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       01 ADMIN-KEY PIC X(16) VALUE "MASTER_PIN_9876".
+       01 WITHDRAW-AMT PIC 9(7)V99.
+       
+       PROCEDURE DIVISION.
+       ATM-MAIN.
+           ACCEPT WITHDRAW-AMT FROM CONSOLE.
+           DISPLAY "Admin Key: " ADMIN-KEY.
+           
+           OPEN OUTPUT TRANSACTION-FILE.
+           WRITE TRANSACTION-RECORD.
+           
+           STOP RUN.`
+            },
+            secure: {
+                desc: 'Properly secured COBOL code following best practices',
+                code: `       IDENTIFICATION DIVISION.
+       PROGRAM-ID. SECURE-BANK.
+       
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       01 ACCOUNT-ID PIC X(20).
+       01 MASKED-DATA PIC X(20).
+       
+       PROCEDURE DIVISION.
+       SECURE-MAIN.
+           PERFORM VALIDATE-INPUT.
+           PERFORM SECURE-QUERY.
+           STOP RUN.
+           
+       VALIDATE-INPUT.
+           IF ACCOUNT-ID = SPACES
+               DISPLAY "Invalid input"
+               STOP RUN
+           END-IF.
+           
+       SECURE-QUERY.
+           EXEC SQL
+               PREPARE STMT FROM
+               'SELECT * FROM ACCOUNTS WHERE ID = ?'
+           END-EXEC.
+           
+           EXEC SQL
+               EXECUTE STMT USING :ACCOUNT-ID
+           END-EXEC.`
+            }
+        };
+
+        function loadSample() {
+            const select = document.getElementById('sampleSelect');
+            const sample = samples[select.value];
+            document.getElementById('sampleDesc').textContent = sample.desc;
+            document.getElementById('cobolCode').value = sample.code;
+        }
+
+        function runScan() {
+            const code = document.getElementById('cobolCode').value;
+            if (!code) {
+                alert('Please load a sample or paste COBOL code');
+                return;
+            }
+
+            const vulnerabilities = [];
+            const lines = code.split('\n');
+            
+            // Pattern 1: SQL Injection
+            lines.forEach((line, idx) => {
+                if (/STRING.*INTO\s+(SQL-QUERY|QUERY)/i.test(line) || /EXECUTE IMMEDIATE/i.test(line)) {
+                    vulnerabilities.push({
+                        type: 'SQL Injection',
+                        severity: 'CRITICAL',
+                        cwe: 'CWE-89',
+                        line: idx + 1,
+                        code: line.trim(),
+                        description: 'Dynamic SQL construction with user input enables SQL injection attacks',
+                        fix: 'Use parameterized queries with EXEC SQL PREPARE'
+                    });
+                }
+            });
+
+            // Pattern 2: Hardcoded Credentials
+            lines.forEach((line, idx) => {
+                if (/MOVE\s+["'][^"']+["']\s+TO\s+(PASSWORD|PASS|KEY|SECRET|ADMIN)/i.test(line)) {
+                    vulnerabilities.push({
+                        type: 'Hardcoded Credentials',
+                        severity: 'CRITICAL',
+                        cwe: 'CWE-798',
+                        line: idx + 1,
+                        code: line.trim(),
+                        description: 'Credentials stored in source code are easily exposed',
+                        fix: 'Store credentials in encrypted vault systems'
+                    });
+                }
+            });
+
+            // Pattern 3: Sensitive Data Exposure
+            lines.forEach((line, idx) => {
+                if (/DISPLAY.*(?:SSN|PASSWORD|CREDIT|KEY)/i.test(line)) {
+                    vulnerabilities.push({
+                        type: 'Sensitive Data Exposure',
+                        severity: 'CRITICAL',
+                        cwe: 'CWE-532',
+                        line: idx + 1,
+                        code: line.trim(),
+                        description: 'Sensitive data written to logs or console',
+                        fix: 'Implement data masking for sensitive fields'
+                    });
+                }
+            });
+
+            // Pattern 4: Unencrypted Storage
+            lines.forEach((line, idx) => {
+                if (/OPEN\s+OUTPUT/i.test(line) && lines[idx+1] && /WRITE/i.test(lines[idx+1])) {
+                    vulnerabilities.push({
+                        type: 'Unencrypted Data Storage',
+                        severity: 'HIGH',
+                        cwe: 'CWE-311',
+                        line: idx + 1,
+                        code: line.trim(),
+                        description: 'Financial data written without encryption',
+                        fix: 'Implement AES-256 encryption before file writes'
+                    });
+                }
+            });
+
+            // Pattern 5: Missing Input Validation
+            lines.forEach((line, idx) => {
+                if (/ACCEPT.*FROM\s+CONSOLE/i.test(line)) {
+                    vulnerabilities.push({
+                        type: 'Missing Input Validation',
+                        severity: 'HIGH',
+                        cwe: 'CWE-20',
+                        line: idx + 1,
+                        code: line.trim(),
+                        description: 'User input accepted without validation',
+                        fix: 'Validate input type, length, and format'
+                    });
+                }
+            });
+
+            displayResults(vulnerabilities, lines.length);
+        }
+
+        function displayResults(vulnerabilities, totalLines) {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.classList.remove('hidden');
+
+            if (vulnerabilities.length === 0) {
+                resultsDiv.innerHTML = `
+                    <div class="bg-green-50 border-2 border-green-400 rounded-lg p-8 text-center">
+                        <svg class="w-16 h-16 text-green-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">✅ No Vulnerabilities Detected!</h3>
+                        <p class="text-gray-700">This code follows security best practices (at least for the patterns we check in this demo).</p>
+                    </div>
+                `;
+                return;
+            }
+
+            const critical = vulnerabilities.filter(v => v.severity === 'CRITICAL').length;
+            const high = vulnerabilities.filter(v => v.severity === 'HIGH').length;
+            const riskScore = (critical * 10) + (high * 7);
+
+            resultsDiv.innerHTML = `
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-2xl font-bold text-gray-900">Scan Results</h2>
+                        <div class="text-right">
+                            <div class="text-4xl font-bold text-red-600">${riskScore}/100</div>
+                            <div class="text-sm text-gray-600">Risk Score</div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-4 mb-6">
+                        <div class="bg-gray-100 rounded-lg p-4 text-center">
+                            <div class="text-2xl font-bold">${totalLines}</div>
+                            <div class="text-sm text-gray-600">Lines Scanned</div>
+                        </div>
+                        <div class="bg-red-100 rounded-lg p-4 text-center">
+                            <div class="text-2xl font-bold text-red-700">${critical}</div>
+                            <div class="text-sm text-gray-700">Critical Issues</div>
+                        </div>
+                        <div class="bg-orange-100 rounded-lg p-4 text-center">
+                            <div class="text-2xl font-bold text-orange-700">${high}</div>
+                            <div class="text-sm text-gray-700">High Issues</div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        ${vulnerabilities.map(v => `
+                            <div class="border-2 ${v.severity === 'CRITICAL' ? 'border-red-300 bg-red-50' : 'border-orange-300 bg-orange-50'} rounded-lg p-4">
+                                <div class="flex items-center justify-between mb-3">
+                                    <div>
+                                        <h3 class="font-bold text-lg text-gray-900">${v.type}</h3>
+                                        <p class="text-sm text-gray-600">Line ${v.line} | ${v.cwe}</p>
+                                    </div>
+                                    <span class="px-3 py-1 text-sm font-bold rounded ${v.severity === 'CRITICAL' ? 'bg-red-200 text-red-800' : 'bg-orange-200 text-orange-800'}">
+                                        ${v.severity}
+                                    </span>
+                                </div>
+                                <div class="bg-gray-900 rounded p-3 mb-3">
+                                    <code class="text-green-400 text-sm">${v.code}</code>
+                                </div>
+                                <div class="text-sm space-y-2">
+                                    <p><strong>Issue:</strong> ${v.description}</p>
+                                    <p><strong>Fix:</strong> ${v.fix}</p>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+
+                    <div class="mt-6 bg-blue-50 border border-blue-300 rounded-lg p-6 text-center">
+                        <h4 class="font-bold text-gray-900 mb-2">Need Complete Coverage?</h4>
+                        <p class="text-gray-700 mb-4">
+                            This demo checks 5 patterns. Our enterprise version detects 50+ vulnerabilities 
+                            with compliance mapping and remediation guidance.
+                        </p>
+                        <a href="https://kevlarveil.com" target="_blank" class="inline-block px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition">
+                            Get Enterprise Version
+                        </a>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Load first sample on page load
+        window.onload = function() {
+            // Always load sample so people can see it
+            loadSample();
+        };
+    </script>
+</body>
+</html>
