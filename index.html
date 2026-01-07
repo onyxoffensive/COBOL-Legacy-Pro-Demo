@@ -3,133 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COBOL Legacy Pro | CLC Assessment</title>
+    <title>COBOL Catalyst | Precision Assessment</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&family=JetBrains+Mono&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;600;900&family=JetBrains+Mono&display=swap');
         
-        body { background-color: #08090a; color: #d1d5db; font-family: 'Outfit', sans-serif; }
-        .gold-line { background: linear-gradient(90deg, transparent, #c5a059, transparent); height: 1px; width: 100%; }
-        .onyx-panel { background: #111316; border: 1px solid #1f2124; box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
-        .rose-gold-text { color: #b76e79; }
-        .btn-vault { 
-            background-color: #c5a059; 
-            color: #000; 
-            font-weight: 700; 
-            text-transform: uppercase; 
-            letter-spacing: 2px;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        body { background-color: #050505; color: #a1a1aa; font-family: 'Inter', sans-serif; }
+        .onyx-card { background: #0c0c0e; border: 1px solid #1a1a1c; transition: border 0.3s ease; }
+        .onyx-card:hover { border-color: #c5a059; }
+        
+        /* The Catalyst "Action" Button */
+        .btn-catalyst { 
+            background-color: #000; 
+            color: #c5a059; 
             border: 1px solid #c5a059;
+            font-weight: 900; 
+            text-transform: uppercase; 
+            letter-spacing: 3px;
+            transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
         }
-        .btn-vault:hover { background-color: transparent; color: #c5a059; box-shadow: 0 0 30px rgba(197, 160, 89, 0.2); }
-        .terminal-bg { background-color: #0d0e10; border-left: 2px solid #c5a059; font-family: 'JetBrains Mono', monospace; }
+        .btn-catalyst:hover { background-color: #c5a059; color: #000; box-shadow: 0 0 40px rgba(197, 160, 89, 0.15); }
         
-        /* Realistic Black Diamond Accent */
+        /* High-End Geometric Diamond */
         .black-diamond {
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            background: linear-gradient(135deg, #2c2c2c 0%, #000000 100%);
+            width: 14px;
+            height: 14px;
+            background: #000;
+            border: 1.5px solid #c5a059;
             transform: rotate(45deg);
-            border: 1px solid #333;
-            box-shadow: 1px 1px 2px rgba(255,255,255,0.05);
+            display: inline-block;
+            box-shadow: inset 0 0 5px rgba(197, 160, 89, 0.2);
         }
+
+        .forensic-text { font-family: 'JetBrains Mono', monospace; color: #c5a059; }
     </style>
 </head>
-<body class="p-6 lg:p-12">
-    <div class="max-w-7xl mx-auto">
+<body class="p-8 lg:p-16">
+    <div class="max-w-6xl mx-auto">
         
-        <header class="flex flex-col md:flex-row justify-between items-end mb-12 border-b border-white/5 pb-8">
-            <div class="flex items-center gap-6">
-                <div class="w-16 h-16 border border-[#c5a059] flex items-center justify-center relative">
-                    <div class="absolute -top-1 -right-1 black-diamond"></div>
-                    <span class="text-3xl">🛡️</span>
-                </div>
+        <div class="flex flex-col md:flex-row justify-between items-start mb-16 gap-8">
+            <div class="flex gap-6">
+                <div class="mt-2"><span class="black-diamond"></span></div>
                 <div>
-                    <h1 class="text-4xl font-light tracking-widest text-white uppercase">COBOL <span class="font-bold">Legacy Pro</span></h1>
-                    <p class="text-[10px] tracking-[0.5em] text-gray-500 uppercase mt-2 italic">A Proprietary CLC Assessment Engine</p>
+                    <h1 class="text-5xl font-black text-white tracking-tighter uppercase leading-none">
+                        COBOL <span class="text-transparent" style="-webkit-text-stroke: 1px #c5a059;">Catalyst</span>
+                    </h1>
+                    <p class="text-[10px] tracking-[0.7em] text-gray-600 uppercase mt-4">Precision Legacy Forensic Engine</p>
                 </div>
             </div>
-            <div class="mt-6 md:mt-0 flex items-center gap-4">
-                <div class="text-right mr-4 hidden md:block">
-                    <p class="text-[9px] uppercase tracking-widest text-gray-600">Secure Link Established</p>
-                    <p class="text-[10px] text-[#c5a059] font-bold uppercase">Fireserver Sync v.4.2</p>
+            <div class="flex items-center gap-8">
+                <div class="text-right">
+                    <span class="block text-[9px] uppercase tracking-widest text-gray-500 font-bold">Fireserver v4.2</span>
+                    <span class="block text-[10px] forensic-text">STATUS: ENCRYPTED SYNC</span>
                 </div>
-                <a href="https://cal.com/onyx.offensive" target="_blank" class="btn-vault px-10 py-4 text-[10px]">Book Briefing</a>
+                <a href="https://cal.com/onyx.offensive" target="_blank" class="btn-catalyst px-8 py-4 text-[11px]">Request Briefing</a>
             </div>
-        </header>
+        </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-            <div class="lg:col-span-4 space-y-8">
-                <div class="onyx-panel p-8 rounded-sm">
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="black-diamond"></div>
-                        <h2 class="text-xs font-bold uppercase tracking-[0.3em] text-white">Environment</h2>
-                    </div>
-                    <select id="sampleSelect" onchange="loadSample()" class="w-full bg-black border border-white/10 p-4 rounded-none text-sm text-gray-300 focus:outline-none focus:border-[#c5a059] transition">
-                        <option value="vulnerable">Mainframe Bank Settlement</option>
-                        <option value="atm">ATM Logic Controller</option>
-                        <option value="secure">Hardened Perimeter</option>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            <div class="space-y-8">
+                <div class="onyx-card p-10">
+                    <h2 class="text-[11px] font-black text-white uppercase tracking-[0.4em] mb-8 flex items-center gap-3">
+                        <span class="w-2 h-2 rounded-full bg-[#c5a059]"></span> Target Environment
+                    </h2>
+                    <select id="sampleSelect" onchange="loadSample()" class="w-full bg-black border border-white/5 p-4 text-xs text-gray-400 focus:outline-none focus:border-[#c5a059]">
+                        <option value="vulnerable">Bank Settlement Ledger</option>
+                        <option value="atm">ATM Withdrawal Logic</option>
+                        <option value="secure">Secure Perimeter Module</option>
                     </select>
-                    <p id="sampleDesc" class="text-[11px] text-gray-500 mt-6 leading-relaxed border-t border-white/5 pt-6 italic"></p>
+                    <p id="sampleDesc" class="text-[11px] text-gray-600 mt-6 leading-relaxed italic"></p>
                 </div>
 
-                <div class="onyx-panel p-8 rounded-sm">
-                    <h3 class="text-[10px] font-bold mb-8 uppercase text-gray-500 tracking-[0.4em]">Audit Parameters</h3>
-                    <div class="space-y-6">
-                        <div class="flex items-center justify-between text-[11px]">
-                            <span class="text-gray-400">Heuristic Depth</span>
-                            <span class="text-white font-bold">L-Advanced</span>
+                <div class="onyx-card p-10">
+                    <h3 class="text-[10px] font-black text-gray-500 uppercase tracking-[0.4em] mb-6">Heuristic Metrics</h3>
+                    <div class="space-y-6 forensic-text text-[10px]">
+                        <div class="flex justify-between border-b border-white/5 pb-2">
+                            <span>Scanning Logic</span>
+                            <span class="text-white">COBOL-PRO-X</span>
                         </div>
-                        <div class="gold-line opacity-20"></div>
-                        <div class="flex items-center justify-between text-[11px]">
-                            <span class="text-gray-400">Pattern Library</span>
-                            <span class="text-white font-bold">Cobol-Pro-X</span>
+                        <div class="flex justify-between border-b border-white/5 pb-2">
+                            <span>Lead Extraction</span>
+                            <span class="text-white">Active</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="lg:col-span-8">
-                <div class="onyx-panel rounded-sm overflow-hidden">
-                    <div class="flex items-center justify-between px-8 py-5 bg-black/40 border-b border-white/5">
-                        <div class="flex items-center gap-4">
-                            <span class="text-[10px] uppercase tracking-widest text-gray-500">Source Protocol</span>
-                        </div>
-                        <button onclick="checkAndRunScan()" class="btn-vault px-8 py-3 text-[9px]">Initiate Scan</button>
+            <div class="lg:col-span-2">
+                <div class="onyx-card overflow-hidden">
+                    <div class="px-8 py-4 bg-black/50 border-b border-white/5 flex justify-between items-center">
+                        <span class="text-[9px] font-bold text-gray-600 tracking-widest uppercase italic">Forensic Source Input</span>
+                        <button onclick="checkAndRunScan()" class="btn-catalyst px-6 py-2 text-[10px]">Execute Assessment</button>
                     </div>
-                    <textarea id="cobolCode" class="terminal-bg w-full h-[550px] p-10 focus:outline-none text-sm text-[#c5a059]/80 leading-relaxed" spellcheck="false"></textarea>
+                    <textarea id="cobolCode" class="w-full h-[500px] bg-transparent p-10 forensic-text text-sm focus:outline-none opacity-80" spellcheck="false"></textarea>
                 </div>
             </div>
         </div>
 
         <div id="results" class="mt-12 hidden"></div>
 
-        <footer class="mt-24 pb-12 text-center">
-            <div class="mb-8 flex justify-center gap-2">
+        <footer class="mt-32 pb-12 text-center">
+            <div class="flex justify-center items-center gap-4 mb-6">
+                <div class="h-[1px] w-12 bg-gray-900"></div>
                 <div class="black-diamond"></div>
-                <div class="black-diamond scale-125 opacity-50"></div>
-                <div class="black-diamond"></div>
+                <div class="h-[1px] w-12 bg-gray-900"></div>
             </div>
-            <p class="text-white font-bold text-lg tracking-[0.8em] uppercase">CLC</p>
-            <p class="text-gray-600 text-[10px] tracking-[0.3em] uppercase mt-2">Professional Legacy Intelligence</p>
+            <p class="text-white font-black text-2xl tracking-[1em] ml-[1em]">CATALYST</p>
         </footer>
     </div>
 
-    <div id="demoEmailModal" class="hidden fixed inset-0 bg-[#08090a]/fb backdrop-blur-xl flex items-center justify-center z-50 p-6">
-        <div class="onyx-panel max-w-md w-full p-12 rounded-none border-t-2 border-[#c5a059] shadow-2xl">
-            <h3 class="text-2xl font-light text-white mb-2 uppercase tracking-tighter text-center">Clearance Required</h3>
-            <p class="text-[10px] text-gray-500 mb-10 text-center tracking-widest uppercase">Authorized CLC Access Token Needed</p>
+    <div id="demoEmailModal" class="hidden fixed inset-0 bg-black/98 backdrop-blur-2xl flex items-center justify-center z-50">
+        <div class="max-w-md w-full p-12 onyx-card border-t-2 border-[#c5a059]">
+            <h3 class="text-2xl font-black text-white mb-2 uppercase tracking-tighter text-center">Protocol Authorization</h3>
+            <p class="text-[10px] text-gray-600 mb-10 text-center tracking-[0.3em] uppercase italic">Secure Fireserver Link Required</p>
             <form onsubmit="unlockDemoScanner(event)" class="space-y-6">
-                <input type="text" id="demoName" required placeholder="Name" class="w-full bg-transparent border-b border-white/10 p-4 text-white focus:border-[#c5a059] outline-none transition" />
-                <input type="email" id="demoEmail" required placeholder="Corporate Email" class="w-full bg-transparent border-b border-white/10 p-4 text-white focus:border-[#c5a059] outline-none transition" />
-                <button type="submit" class="btn-vault w-full py-5 mt-6">Authorize Sync</button>
+                <input type="text" id="demoName" required placeholder="Full Name" class="w-full bg-transparent border-b border-white/10 p-4 text-white focus:border-[#c5a059] outline-none transition forensic-text" />
+                <input type="email" id="demoEmail" required placeholder="Corporate Email" class="w-full bg-transparent border-b border-white/10 p-4 text-white focus:border-[#c5a059] outline-none transition forensic-text" />
+                <button type="submit" class="btn-catalyst w-full py-5 mt-6">Authorize Sync</button>
             </form>
         </div>
     </div>
 
     <script>
-        // Logic maintained for backend connectivity
         function closeDemoModal() { document.getElementById('demoEmailModal').classList.add('hidden'); }
         function checkAndRunScan() {
             if (localStorage.getItem('clc_authorized') !== 'true') {
@@ -143,7 +138,7 @@
             fetch('https://formspree.io/f/mblnyqlb', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name: document.getElementById('demoName').value, email: document.getElementById('demoEmail').value, _subject: 'CLC NEW AUTHORIZATION' })
+                body: JSON.stringify({ name: document.getElementById('demoName').value, email: document.getElementById('demoEmail').value, _subject: 'CATALYST AUTHORIZATION' })
             }).finally(() => {
                 localStorage.setItem('clc_authorized', 'true');
                 document.getElementById('demoEmailModal').classList.add('hidden');
@@ -151,9 +146,9 @@
             });
         }
         const samples = {
-            vulnerable: { desc: 'HEURISTIC ALERT: SQL Construction via Accept string detected. Risk level: Critical.', code: '       IDENTIFICATION DIVISION.\n       PROGRAM-ID. BANK-SETTLE.\n       PROCEDURE DIVISION.\n           ACCEPT INPUT-VAR FROM CONSOLE.\n           STRING "SELECT * FROM LEDGER WHERE ID=\'" INPUT-VAR "\'" INTO SQL-CMD.\n           MOVE "ADMIN_CRED_992" TO MASTER-KEY.\n           DISPLAY "PII DATA: " SSN-NUM.\n           STOP RUN.' },
-            atm: { desc: 'HEURISTIC ALERT: Static key verification found in ATM procedure logic.', code: '       IDENTIFICATION DIVISION.\n       PROGRAM-ID. ATM-CORE.\n       WORKING-STORAGE SECTION.\n       01 M-KEY PIC X(16) VALUE "OVERRIDE_8822".\n       PROCEDURE DIVISION.\n           IF PIN = M-KEY THEN PERFORM DISPENSE.' },
-            secure: { desc: 'INTEGRITY PASS: Standard parameterized execution detected. No high-risk strings found.', code: '       IDENTIFICATION DIVISION.\n       PROGRAM-ID. SECURE-BANK.\n       PROCEDURE DIVISION.\n           EXEC SQL PREPARE STMT FROM \'SELECT * FROM ACCOUNTS WHERE ID = ?\' END-EXEC.' }
+            vulnerable: { desc: 'TARGET: BANK-SETTLE. Alert: Dynamic SQL Construction identified in main procedure.', code: '       IDENTIFICATION DIVISION.\n       PROGRAM-ID. BANK-SETTLE.\n       PROCEDURE DIVISION.\n           ACCEPT INPUT-VAR FROM CONSOLE.\n           STRING "SELECT * FROM LEDGER WHERE ID=\'" INPUT-VAR "\'" INTO SQL-CMD.\n           MOVE "ADMIN_CRED_992" TO MASTER-KEY.\n           DISPLAY "PII DATA: " SSN-NUM.\n           STOP RUN.' },
+            atm: { desc: 'TARGET: ATM-CORE. Alert: Static master key detected in working-storage.', code: '       IDENTIFICATION DIVISION.\n       PROGRAM-ID. ATM-CORE.\n       WORKING-STORAGE SECTION.\n       01 M-KEY PIC X(16) VALUE "OVERRIDE_8822".\n       PROCEDURE DIVISION.\n           IF PIN = M-KEY THEN PERFORM DISPENSE.' },
+            secure: { desc: 'TARGET: SECURE-BANK. Status: Integrity Pass. No forensic anomalies found.', code: '       IDENTIFICATION DIVISION.\n       PROGRAM-ID. SECURE-BANK.\n       PROCEDURE DIVISION.\n           EXEC SQL PREPARE STMT FROM \'SELECT * FROM ACCOUNTS WHERE ID = ?\' END-EXEC.' }
         };
         function loadSample() {
             const val = document.getElementById('sampleSelect').value;
@@ -163,15 +158,15 @@
         function runScan() {
             const code = document.getElementById('cobolCode').value;
             const findings = [];
-            if (/STRING.*INTO.*SQL/i.test(code)) findings.push({t: 'Logic Injection', s: 'CRITICAL', f: 'Parameterized Execution'});
-            if (/MOVE.*TO.*(?:PASS|KEY)/i.test(code)) findings.push({t: 'Auth Exposure', s: 'CRITICAL', f: 'Vault Integration Required'});
-            if (/DISPLAY.*(?:SSN|CREDIT)/i.test(code)) findings.push({t: 'Data Leak', s: 'HIGH', f: 'Field Masking Required'});
+            if (/STRING.*INTO.*SQL/i.test(code)) findings.push({t: 'SQL Logic Injection', s: 'CRITICAL', f: 'Parameterized Execution'});
+            if (/MOVE.*TO.*(?:PASS|KEY)/i.test(code)) findings.push({t: 'Credential Exposure', s: 'CRITICAL', f: 'Vault Sync Integration'});
+            if (/DISPLAY.*(?:SSN|CREDIT)/i.test(code)) findings.push({t: 'Sensitive Data Leak', s: 'HIGH', f: 'Field Masking Required'});
             const res = document.getElementById('results');
             res.classList.remove('hidden');
             if (findings.length === 0) {
-                res.innerHTML = '<div class="onyx-panel p-12 text-center text-white text-[10px] tracking-[0.5em] uppercase border-t border-green-500/30">Protocol Integrity: Verified</div>';
+                res.innerHTML = '<div class="onyx-card p-16 text-center text-white text-[10px] tracking-[0.5em] uppercase border-t border-green-900/40 italic">Assessment Complete: Integrity Verified</div>';
             } else {
-                res.innerHTML = `<div class="onyx-panel p-12"><h2 class="text-xs font-bold mb-10 text-white uppercase tracking-[0.4em]">Audit Report</h2><div class="space-y-6">${findings.map(f => `<div class="border-b border-white/5 pb-6 flex justify-between items-center"><div><p class="text-[11px] font-bold text-white uppercase tracking-widest">${f.t}</p><p class="text-[9px] text-gray-500 mt-1 uppercase tracking-tighter">${f.f}</p></div><span class="text-[10px] text-[#c5a059] border border-[#c5a059] px-4 py-1 font-bold uppercase">${f.s}</span></div>`).join('')}</div></div>`;
+                res.innerHTML = `<div class="onyx-card p-12 border-t-2 border-red-900/50"><h2 class="text-xs font-black mb-10 text-white uppercase tracking-[0.4em]">Forensic Audit Report</h2><div class="space-y-6">${findings.map(f => `<div class="border-b border-white/5 pb-8 flex justify-between items-center"><div><p class="text-[12px] font-black text-white uppercase tracking-widest leading-none">${f.t}</p><p class="text-[9px] forensic-text mt-2 uppercase italic">${f.f}</p></div><span class="text-[10px] text-[#c5a059] border border-[#c5a059] px-4 py-2 font-bold uppercase">${f.s}</span></div>`).join('')}</div></div>`;
             }
             res.scrollIntoView({ behavior: 'smooth' });
         }
