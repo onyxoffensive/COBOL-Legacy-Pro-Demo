@@ -8,40 +8,37 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=JetBrains+Mono:wght@500&display=swap');
         
-        /* Deep Vault Environment */
         html, body { 
             background-color: #000000 !important; 
             color: #ffffff !important; 
             margin: 0; padding: 0; min-height: 100vh;
             font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
         }
 
-        /* Metallic Page Bezel */
+        /* Metallic Bezel */
         body {
             border: 15px solid #2d3748;
             border-image: linear-gradient(to bottom, #718096, #1a202c, #4a5568) 1;
             box-sizing: border-box;
         }
 
-        /* The CC Vault Seal */
         .vault-seal {
-            width: 320px;
-            height: 320px;
-            /* Ensure this filename matches your uploaded image exactly */
-            background: url('Gemini_Generated_Image_gysivggysivggysi.jpg') no-repeat center; 
+            width: 350px;
+            height: 350px;
+            /* Look for the exact filename you have in your repo */
+            background: url('./Gemini_Generated_Image_gysivggysivggysi.jpg') no-repeat center; 
             background-size: contain;
             margin: 20px auto;
-            filter: drop-shadow(0 0 30px rgba(0, 242, 255, 0.4));
+            filter: drop-shadow(0 0 40px rgba(0, 242, 255, 0.5));
         }
 
         .brand-text {
             font-family: 'Orbitron', sans-serif;
             font-weight: 900;
-            background: linear-gradient(to bottom, #ffffff 0%, #94a3b8 100%);
+            background: linear-gradient(to bottom, #ffffff, #94a3b8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            letter-spacing: 0.3em;
+            letter-spacing: 0.4em;
             text-transform: uppercase;
         }
 
@@ -49,70 +46,62 @@
             background: #05070a;
             border: 1px solid #2d3748;
             height: 100%;
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
         }
 
-        /* Neon Teal Terminal - Extended Format */
+        /* Neon Teal Terminal - LONG CONTENT */
         textarea { 
             background: #000000 !important; 
             color: #00f2ff !important; 
             font-family: 'JetBrains Mono', monospace;
-            font-size: 14px !important;
+            font-size: 15px !important;
             border: none !important;
-            padding: 35px;
+            padding: 40px;
             width: 100%;
-            height: 750px; 
+            height: 800px; /* Forced large size */
             outline: none;
-            text-shadow: 0 0 8px rgba(0, 242, 255, 0.5);
-            line-height: 1.6;
+            text-shadow: 0 0 8px rgba(0, 242, 255, 0.6);
+            line-height: 1.8;
             resize: none;
         }
 
         .btn-vault { 
-            background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%); 
+            background: #ffffff; 
             color: #000; 
             font-family: 'Orbitron', sans-serif;
             font-weight: 900;
-            padding: 14px 40px;
+            padding: 15px 45px;
             text-transform: uppercase;
             letter-spacing: 3px;
             cursor: pointer;
             border: 1px solid #718096;
-            transition: 0.3s;
-        }
-
-        .btn-vault:hover {
-            filter: brightness(1.2);
-            box-shadow: 0 0 25px rgba(0, 242, 255, 0.6);
         }
 
         .real-diamond {
-            width: 22px;
-            height: 22px;
+            width: 24px;
+            height: 24px;
             background: url('https://img.icons8.com/external-flat-icons-inmotus-design/67/ffffff/external-Diamond-geometry-flat-icons-inmotus-design.png') no-repeat center;
             background-size: contain;
             display: inline-block;
-            filter: drop-shadow(0 0 10px #fff);
         }
     </style>
 </head>
-<body class="p-6 md:p-12">
+<body class="p-4 md:p-12">
 
-    <header class="text-center mb-12">
+    <header class="text-center mb-16">
         <div class="vault-seal"></div>
         <div class="flex justify-center items-center gap-6">
             <span class="real-diamond"></span>
-            <h1 class="brand-text text-5xl">COBOL Catalyst</h1>
+            <h1 class="brand-text text-6xl">COBOL Catalyst</h1>
             <span class="real-diamond"></span>
         </div>
-        <p class="text-[12px] tracking-[1.2em] text-slate-500 font-black mt-8">DEFRAME LEGACY RECON // BANKING DOMINATION</p>
+        <p class="text-[12px] tracking-[1.2em] text-slate-500 font-black mt-10">DEFRAME LEGACY RECON // BANKING DOMINATION</p>
     </header>
 
-    <main class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10">
+    <main class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12">
         
         <div class="lg:col-span-4">
             <div class="steel-panel p-10">
-                <label class="text-[10px] text-slate-500 block mb-6 uppercase font-black tracking-widest">Recon Intelligence Modules</label>
+                <label class="text-[10px] text-slate-500 block mb-8 uppercase font-black tracking-widest">Recon Intelligence Modules</label>
                 <select id="sampleSelect" onchange="loadSample()" class="w-full bg-black border border-slate-700 p-5 text-white text-sm outline-none mb-10 font-bold">
                     <option value="vulnerable">01. Settlement Buffer Backtrack</option>
                     <option value="atm">02. ATM Master-Key Recon</option>
@@ -120,16 +109,16 @@
                     <option value="perimeter">04. External Perimeter Audit</option>
                     <option value="forensic">05. Forensic Memory Dump</option>
                 </select>
-                <div id="sampleDesc" class="text-xs text-slate-400 italic bg-black/50 p-6 border-l-4 border-slate-600 min-h-[150px] leading-relaxed uppercase tracking-tighter">
-                    Awaiting Target Selection...
+                <div id="sampleDesc" class="text-xs text-slate-400 italic bg-black/50 p-8 border-l-4 border-slate-600 min-h-[150px] leading-relaxed uppercase tracking-tighter">
+                    Select a module...
                 </div>
             </div>
         </div>
 
         <div class="lg:col-span-8">
-            <div class="steel-panel overflow-hidden">
+            <div class="steel-panel">
                 <div class="p-6 border-b border-slate-800 flex justify-between items-center bg-slate-900/30">
-                    <span class="text-[10px] text-slate-400 tracking-widest uppercase font-black">Mainframe Forensic Buffer</span>
+                    <span class="text-[11px] text-slate-500 tracking-widest uppercase font-black">Mainframe Forensic Buffer</span>
                     <button onclick="checkAndRunScan()" class="btn-vault">Analyze</button>
                 </div>
                 <textarea id="cobolCode" spellcheck="false" readonly></textarea>
@@ -141,23 +130,23 @@
         const samples = {
             vulnerable: { 
                 desc: 'ANALYSIS: Unmasked ACCEPT statements in settlement loop. Identifying SQL string concatenation path.', 
-                code: '       IDENTIFICATION DIVISION.\n       PROGRAM-ID. SETTLE-BACK.\n       DATA DIVISION.\n       WORKING-STORAGE SECTION.\n       01  USER-BUFFER       PIC X(50).\n       01  SQL-STATEMENT     PIC X(200).\n       01  WS-DB-ERROR-CODE  PIC XX.\n       01  WS-AUTH-BYPASS    PIC 9 VALUE 0.\n\n       PROCEDURE DIVISION.\n       0000-MAIN-LOGIC.\n           DISPLAY "SYSTEM: ENTER TRANSACTION_ID".\n           ACCEPT USER-BUFFER FROM CONSOLE.\n           \n           /* DEFRAME FORENSIC NOTE: POTENTIAL INJECTION POINT */\n           STRING "SELECT * FROM LEDGER WHERE ID = \'" \n                  USER-BUFFER \n                  "\'" \n                  DELIMITED BY SIZE INTO SQL-STATEMENT.\n\n           DISPLAY "DEBUG: " SQL-STATEMENT.\n           EXEC SQL EXECUTE IMMEDIATE :SQL-STATEMENT END-EXEC.\n\n           IF WS-DB-ERROR-CODE NOT = "00"\n               PERFORM 9999-ERROR-HANDLER.\n           \n           STOP RUN.\n\n       9999-ERROR-HANDLER.\n           DISPLAY "ALERT: DATABASE ACCESS VIOLATION".' 
+                code: 'IDENTIFICATION DIVISION.\nPROGRAM-ID. SETTLE-BACKTRACK-V1.\n\nENVIRONMENT DIVISION.\nINPUT-OUTPUT SECTION.\nFILE-CONTROL.\n    SELECT LEDGER-FILE ASSIGN TO "SYS-LEDGER".\n\nDATA DIVISION.\nFILE SECTION.\nFD  LEDGER-FILE.\n01  LEDGER-REC.\n    05  REC-ID       PIC X(10).\n    05  REC-BAL      PIC 9(10)V99.\n\nWORKING-STORAGE SECTION.\n01  USER-BUFFER       PIC X(50).\n01  SQL-STATEMENT     PIC X(200).\n01  WS-DB-ERROR-CODE  PIC XX.\n01  WS-EOF-FLAG       PIC X VALUE "N".\n\nPROCEDURE DIVISION.\n0000-MAIN-LOGIC.\n    DISPLAY "SYSTEM-GATEWAY: ENTER TRANSACTION_ID".\n    ACCEPT USER-BUFFER FROM CONSOLE.\n    \n    /* DEFRAME FORENSIC NOTE: POTENTIAL INJECTION POINT DETECTED */\n    /* STRING CONCATENATION WITHOUT PARAMETERIZATION */\n    \n    STRING "SELECT * FROM LEDGER WHERE ID = \'" \n           USER-BUFFER \n           "\'" \n           DELIMITED BY SIZE INTO SQL-STATEMENT.\n\n    DISPLAY "EXECUTING DYNAMIC QUERY: " SQL-STATEMENT.\n    EXEC SQL EXECUTE IMMEDIATE :SQL-STATEMENT END-EXEC.\n\n    IF WS-DB-ERROR-CODE NOT = "00"\n        PERFORM 9999-ERROR-HANDLER.\n    \n    PERFORM 1000-FETCH-RESULTS UNTIL WS-EOF-FLAG = "Y".\n    STOP RUN.\n\n1000-FETCH-RESULTS.\n    EXEC SQL FETCH CURSOR-1 INTO :REC-ID, :REC-BAL END-EXEC.\n    IF SQLCODE = 100\n        MOVE "Y" TO WS-EOF-FLAG.\n\n9999-ERROR-HANDLER.\n    DISPLAY "CRITICAL ALERT: DATABASE ACCESS VIOLATION".\n    DISPLAY "ERROR TRACE ATTACHED TO ONYX-REPORT".' 
             },
             atm: { 
                 desc: 'ANALYSIS: Scanning for hardcoded supervisor overrides and administrative bypass flags.', 
-                code: '       IDENTIFICATION DIVISION.\n       PROGRAM-ID. ATM-RECON.\n       DATA DIVISION.\n       WORKING-STORAGE SECTION.\n       \n       /* CRITICAL: HARDCODED KEY DETECTED */\n       01  ADMIN-OVERRIDE   PIC X(16) VALUE "ONYX-ADMIN-8822".\n       01  MASTER-AUTH      PIC 9 VALUE 0.\n       01  IN-PIN           PIC X(4).\n\n       PROCEDURE DIVISION.\n       1000-AUTH-CHECK.\n           DISPLAY "ENTER ACCESS PIN:".\n           ACCEPT IN-PIN.\n\n           IF IN-PIN = "8822"\n               MOVE 1 TO MASTER-AUTH\n               DISPLAY "ADMINISTRATIVE BYPASS ACTIVE"\n               PERFORM 2000-DISPENSE-ALL\n           ELSE\n               PERFORM 3000-STANDARD-VAL.\n\n       2000-DISPENSE-ALL.\n           DISPLAY "FORCE WITHDRAWAL INITIATED...".' 
+                code: 'IDENTIFICATION DIVISION.\nPROGRAM-ID. ATM-CORE-RECON.\n\nDATA DIVISION.\nWORKING-STORAGE SECTION.\n\n/* CRITICAL SECURITY RISK: HARDCODED CREDENTIALS FOUND */\n01  ADMIN-OVERRIDE-KEY  PIC X(16) VALUE "ONYX-ADMIN-8822".\n01  MASTER-AUTH-BYPASS  PIC 9 VALUE 0.\n01  USER-INPUT-PIN      PIC X(4).\n01  WS-ATTEMPT-COUNT    PIC 9 VALUE 0.\n01  WS-DISPENSE-LIMIT   PIC 9(6) VALUE 100000.\n\nPROCEDURE DIVISION.\n1000-AUTHENTICATION-GATE.\n    DISPLAY "SYSTEM READY. INSERT CARD.".\n    DISPLAY "INPUT 4-DIGIT PIN:".\n    ACCEPT USER-INPUT-PIN.\n\n    /* FORENSIC DETECTION: ADMINISTRATIVE OVERRIDE LOGIC */\n    IF USER-INPUT-PIN = "8822"\n        MOVE 1 TO MASTER-AUTH-BYPASS\n        DISPLAY "ONYX OVERRIDE ACTIVE: ACCESS GRANTED"\n        PERFORM 2000-ADMIN-MENU\n    ELSE\n        PERFORM 3000-STANDARD-VAL.\n\n2000-ADMIN-MENU.\n    DISPLAY "ADMINISTRATIVE FUNCTIONS ENABLED.".\n    DISPLAY "1. VIEW LEDGER"\n    DISPLAY "2. FORCE DISPENSE"\n    DISPLAY "3. OVERRIDE LIMITS".\n    ACCEPT USER-INPUT-PIN.\n\n3000-STANDARD-VAL.\n    ADD 1 TO WS-ATTEMPT-COUNT.\n    IF WS-ATTEMPT-COUNT > 3\n        DISPLAY "CARD RETAINED" \n        STOP RUN.' 
             },
             ledger: { 
                 desc: 'ANALYSIS: Verifying block-level integrity across distributed transaction ledgers.', 
-                code: '       IDENTIFICATION DIVISION.\n       PROGRAM-ID. LEDGER-INTEGRITY.\n       PROCEDURE DIVISION.\n       /* SCANNING FOR DISCREPANCIES IN TRANSACTION HASHES */\n       OPEN INPUT LEDGER-FILE.\n       READ LEDGER-FILE AT END MOVE "Y" TO EOF-FLAG.\n       IF LEDGER-HASH NOT = CALCULATED-HASH\n           DISPLAY "TAMPER DETECTED AT BLOCK " BLOCK-ID.' 
+                code: 'IDENTIFICATION DIVISION.\nPROGRAM-ID. LEDGER-INTEGRITY-AUDIT.\n\nWORKING-STORAGE SECTION.\n01  BLOCK-DATA.\n    05  BLOCK-ID         PIC 9(10).\n    05  PREV-HASH        PIC X(64).\n    05  CURR-HASH        PIC X(64).\n01  WS-CALC-HASH         PIC X(64).\n01  WS-TAMPER-FLAG       PIC X VALUE "N".\n\nPROCEDURE DIVISION.\nAUDIT-START.\n    OPEN INPUT LEDGER-FILE.\n    PERFORM SCAN-BLOCKS UNTIL EOF.\n    CLOSE LEDGER-FILE.\n    STOP RUN.\n\nSCAN-BLOCKS.\n    READ LEDGER-FILE INTO BLOCK-DATA.\n    PERFORM 5000-VERIFY-HASH.\n    IF WS-TAMPER-FLAG = "Y"\n        DISPLAY "BLOCK INTEGRITY FAILURE AT: " BLOCK-ID.\n\n5000-VERIFY-HASH.\n    /* CALL EXTERNAL HASH ENGINE */\n    CALL "SHA256" USING BLOCK-DATA, WS-CALC-HASH.\n    IF WS-CALC-HASH NOT = CURR-HASH\n        MOVE "Y" TO WS-TAMPER-FLAG.' 
             },
             perimeter: { 
                 desc: 'ANALYSIS: Auditing external gateway ports and unauthenticated ACCEPT listeners.', 
-                code: '       IDENTIFICATION DIVISION.\n       PROGRAM-ID. GATEWAY-AUDIT.\n       PROCEDURE DIVISION.\n       /* AUDITING PORT 8080 LISTENER */\n       ACCEPT TCP-PACKET FROM NETWORK-INTERFACE.\n       IF PACKET-SOURCE IS UNTRUSTED\n           PERFORM LOG-INTRUSION-ATTEMPT.' 
+                code: 'IDENTIFICATION DIVISION.\nPROGRAM-ID. GATEWAY-SECURITY-AUDIT.\n\nWORKING-STORAGE SECTION.\n01  PORT-STATUS.\n    05  PORT-ID      PIC 9(4).\n    05  PORT-STATE   PIC X(10).\n01  INBOUND-PACKET   PIC X(1024).\n\nPROCEDURE DIVISION.\nMONITOR-TRAFFIC.\n    DISPLAY "ONYX SCANNER: MONITORING PORT 8080".\n    ACCEPT INBOUND-PACKET FROM NETWORK-PORT.\n    \n    /* CHECKING FOR UNENCRYPTED COMMAND STRINGS */\n    IF INBOUND-PACKET CONTAINS "CMD" OR "SH"\n        DISPLAY "ALARM: REMOTE ACCESS ATTEMPT DETECTED".' 
             },
             forensic: { 
                 desc: 'ANALYSIS: Full memory dump of transaction buffer for forensic backtracking.', 
-                code: '       IDENTIFICATION DIVISION.\n       PROGRAM-ID. MEM-DUMP.\n       PROCEDURE DIVISION.\n       /* DUMPING WORKING-STORAGE HEX BUFFERS */\n       DISPLAY HEX-VALUE OF WS-TRANSACTION-DATA.\n       DISPLAY HEX-VALUE OF WS-ENCRYPTION-KEY.' 
+                code: 'IDENTIFICATION DIVISION.\nPROGRAM-ID. FORENSIC-MEM-DUMP.\n\nWORKING-STORAGE SECTION.\n01  MEMORY-MAP.\n    05  OFFSET-01    PIC X(256).\n    05  OFFSET-02    PIC X(256).\n01  WS-DUMP-TARGET   PIC X(50) VALUE "ONYX-DUMP.LOG".\n\nPROCEDURE DIVISION.\nINITIATE-DUMP.\n    DISPLAY "MAPPING WORKING STORAGE TO LOG...".\n    OPEN OUTPUT DUMP-FILE.\n    WRITE DUMP-REC FROM MEMORY-MAP.\n    CLOSE DUMP-FILE.\n    DISPLAY "DUMP COMPLETE. SYNCING TO PROTONMAIL...".' 
             }
         };
 
@@ -168,7 +157,7 @@
         }
 
         function checkAndRunScan() {
-            alert("DEFRAME RECON COMPLETE: Logs exported to onyx.offensive@protonmail.com");
+            alert("DEFRAME RECON COMPLETE: Results synced to onyx.offensive@protonmail.com");
         }
 
         window.onload = loadSample;
