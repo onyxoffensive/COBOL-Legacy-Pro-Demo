@@ -8,134 +8,169 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=JetBrains+Mono:wght@500&display=swap');
         
-        /* Deep Vault Environment - Prevents White-out */
+        /* The Vault Atmosphere */
         html, body { 
-            background-color: #000000 !important; 
-            color: #ffffff !important; 
+            background-color: #020408 !important; 
+            color: #e2e8f0 !important; 
             margin: 0;
             padding: 0;
             min-height: 100vh;
             font-family: 'Inter', sans-serif;
+            background-image: 
+                radial-gradient(circle at 50% 0%, #0a1622 0%, #020408 100%),
+                url('https://www.transparenttextures.com/patterns/brushed-alum.png'); /* Subtle Steel Texture */
         }
 
-        /* Metallic Border for the Site Edge */
-        body::before {
+        /* Metallic Frame for the Website */
+        body::after {
             content: "";
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
-            border: 10px solid transparent;
-            border-image: linear-gradient(to bottom, #718096, #2d3748, #718096) 1;
+            border: 15px solid transparent;
+            border-image: linear-gradient(135deg, #718096 0%, #1a202c 50%, #718096 100%) 1;
             pointer-events: none;
             z-index: 1000;
+            box-shadow: inset 0 0 50px rgba(0,0,0,1);
         }
 
-        /* The Main Logo - Corrected Path */
+        /* The Main Vault Seal */
         .vault-seal {
-            width: 320px;
-            height: 320px;
+            width: 380px;
+            height: 380px;
             background: url('./Gemini_Generated_Image_gysivggysivggysi.jpg') no-repeat center; 
             background-size: contain;
             margin: 0 auto;
-            filter: drop-shadow(0 0 20px rgba(0, 242, 255, 0.2));
+            filter: drop-shadow(0 0 40px rgba(0, 242, 255, 0.15));
+            transition: all 0.5s ease;
         }
 
         .brand-text {
             font-family: 'Orbitron', sans-serif;
             font-weight: 900;
-            background: linear-gradient(to bottom, #ffffff 0%, #a3aeb9 100%);
+            background: linear-gradient(to bottom, #ffffff 20%, #94a3b8 60%, #4a5568 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            letter-spacing: 0.3em;
+            letter-spacing: 0.4em;
             text-transform: uppercase;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.8));
         }
 
+        /* Hardened Steel Panels */
         .steel-panel {
-            background: #0a0e14;
-            border: 2px solid #2d3748;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.9);
+            background: linear-gradient(145deg, #0f172a, #02060f);
+            border: 1px solid #2d3748;
+            box-shadow: 20px 20px 60px #010204, -5px -5px 20px rgba(255,255,255,0.02);
+            position: relative;
+            overflow: hidden;
         }
 
-        /* Teal Blue Terminal Writing */
+        .steel-panel::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, #718096, transparent);
+        }
+
+        /* Neon Teal Terminal */
         textarea { 
             background: #000000 !important; 
             color: #00f2ff !important; 
             font-family: 'JetBrains Mono', monospace;
-            font-size: 16px !important;
-            border: 1px solid #1a202c !important;
-            padding: 30px;
+            font-size: 18px !important;
+            border: none !important;
+            padding: 40px;
             width: 100%;
             height: 600px;
             outline: none;
+            text-shadow: 0 0 10px rgba(0, 242, 255, 0.3);
+            line-height: 1.6;
         }
 
-        /* Realistic Diamond Accents */
+        /* Premium Diamond Buttons */
+        .btn-vault { 
+            background: linear-gradient(180deg, #f8fafc 0%, #94a3b8 100%); 
+            color: #020617; 
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            padding: 1.25rem 3.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            cursor: pointer;
+            border: 1px solid #ffffff;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .btn-vault:hover {
+            transform: translateY(-3px);
+            filter: brightness(1.1);
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.4);
+        }
+
         .real-diamond {
-            width: 22px;
-            height: 22px;
+            width: 24px;
+            height: 24px;
             background: url('https://img.icons8.com/external-flat-icons-inmotus-design/67/ffffff/external-Diamond-geometry-flat-icons-inmotus-design.png') no-repeat center;
             background-size: contain;
             display: inline-block;
-            filter: drop-shadow(0 0 12px #fff);
-        }
-
-        .btn-vault { 
-            background: linear-gradient(180deg, #e2e8f0 0%, #718096 100%); 
-            color: #000; 
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 900;
-            padding: 1rem 2.5rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            cursor: pointer;
-            border: 1px solid #fff;
+            filter: drop-shadow(0 0 15px #fff);
         }
     </style>
 </head>
-<body class="p-8 md:p-16">
+<body class="p-10 md:p-20">
 
-    <header class="text-center mb-12">
+    <header class="text-center mb-20">
         <div class="vault-seal"></div>
-        <div class="flex justify-center items-center gap-6">
+        <div class="flex justify-center items-center gap-8 -mt-4">
             <span class="real-diamond"></span>
-            <h1 class="brand-text text-5xl">COBOL Catalyst</h1>
+            <h1 class="brand-text text-6xl">COBOL Catalyst</h1>
             <span class="real-diamond"></span>
         </div>
-        <p class="text-[11px] tracking-[0.9em] text-slate-500 font-black uppercase mt-6">
+        <p class="text-[12px] tracking-[1em] text-slate-500 font-black uppercase mt-8 opacity-60">
             Deframe Legacy Recon // Banking Domination
         </p>
     </header>
 
-    <main class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8">
+    <main class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12">
         
-        <div class="lg:col-span-4">
-            <div class="steel-panel p-8">
-                <label class="block text-[10px] tracking-widest text-slate-500 mb-4 uppercase font-bold">Target Module</label>
-                <select id="sampleSelect" onchange="loadSample()" class="w-full bg-black border border-slate-700 p-4 text-white outline-none">
-                    <option value="vulnerable">Settlement Buffer</option>
-                    <option value="atm">ATM Master Key</option>
+        <div class="lg:col-span-4 space-y-10">
+            <div class="steel-panel p-10">
+                <label class="block text-[11px] tracking-[0.3em] text-slate-500 mb-6 uppercase font-black">Recon Target Selection</label>
+                <select id="sampleSelect" onchange="loadSample()" class="w-full bg-black border border-slate-800 p-5 text-white font-bold outline-none focus:border-blue-500 transition-all">
+                    <option value="vulnerable">Settlement Loopback</option>
+                    <option value="atm">ATM Core Override</option>
                 </select>
-                <div id="sampleDesc" class="mt-6 text-xs text-slate-400 italic"></div>
+                <div id="sampleDesc" class="mt-10 p-6 bg-black/40 border-l-4 border-blue-900 text-sm text-slate-400 font-medium tracking-tight leading-relaxed"></div>
+            </div>
+
+            <div class="steel-panel p-10 text-center bg-gradient-to-b from-slate-900 to-black">
+                <span class="text-[10px] tracking-[0.5em] text-slate-600 uppercase font-black">Connection Identity</span>
+                <p class="text-white mt-4 font-mono text-lg tracking-widest">ONYX-PROTO-01</p>
             </div>
         </div>
 
         <div class="lg:col-span-8">
-            <div class="steel-panel">
-                <div class="p-5 border-b border-slate-800 flex justify-between items-center">
-                    <span class="text-[10px] text-slate-600 tracking-widest uppercase font-bold">Forensic Mainframe Source</span>
-                    <button onclick="checkAndRunScan()" class="btn-vault">Run Recon</button>
+            <div class="steel-panel shadow-2xl">
+                <div class="p-6 border-b border-slate-800 flex justify-between items-center bg-slate-900/40">
+                    <div class="flex items-center gap-3">
+                        <span class="w-2 h-2 rounded-full bg-blue-500 animate-ping"></span>
+                        <span class="text-[10px] text-slate-400 tracking-[0.4em] uppercase font-bold">Mainframe Buffer Access</span>
+                    </div>
+                    <button onclick="checkAndRunScan()" class="btn-vault">Analyze</button>
                 </div>
                 <textarea id="cobolCode" spellcheck="false"></textarea>
             </div>
         </div>
     </main>
 
-    <div id="demoEmailModal" class="hidden fixed inset-0 bg-black/98 flex items-center justify-center z-[2000] p-6">
-        <div class="max-w-md w-full p-12 steel-panel text-center">
-            <h3 class="brand-text text-2xl mb-8">Identity Protocol</h3>
-            <form onsubmit="unlockDemoScanner(event)" class="space-y-6">
-                <input type="text" id="demoName" required placeholder="Identity Name" class="w-full bg-transparent border-b border-slate-700 p-4 text-white outline-none text-center uppercase tracking-widest" />
-                <input type="email" id="demoEmail" required placeholder="ProtonMail" class="w-full bg-transparent border-b border-slate-700 p-4 text-white outline-none text-center uppercase tracking-widest" />
-                <button type="submit" class="btn-vault w-full">Sync Gate</button>
+    <div id="demoEmailModal" class="hidden fixed inset-0 bg-black/99 flex items-center justify-center z-[2000] p-6 backdrop-blur-lg">
+        <div class="max-w-md w-full p-16 steel-panel text-center">
+            <div class="real-diamond mb-8 scale-150"></div>
+            <h3 class="brand-text text-3xl mb-10">System Access</h3>
+            <form onsubmit="unlockDemoScanner(event)" class="space-y-10">
+                <input type="text" id="demoName" required placeholder="Authorized Identity" class="w-full bg-transparent border-b-2 border-slate-800 p-4 text-white outline-none text-center uppercase tracking-[0.3em] font-bold focus:border-white transition-all" />
+                <input type="email" id="demoEmail" required placeholder="ProtonMail" class="w-full bg-transparent border-b-2 border-slate-800 p-4 text-white outline-none text-center uppercase tracking-[0.3em] font-bold focus:border-white transition-all" />
+                <button type="submit" class="btn-vault w-full">Engage Protocol</button>
             </form>
         </div>
     </div>
@@ -146,7 +181,7 @@
                 document.getElementById('demoEmailModal').classList.remove('hidden');
                 return;
             }
-            alert("RECON COMPLETE: Vulnerabilities mapped to forensic report.");
+            alert("RECON COMPLETE: Forensics sent to Onyx Hub.");
         }
 
         function unlockDemoScanner(event) {
@@ -156,8 +191,8 @@
         }
 
         const samples = {
-            vulnerable: { desc: 'SQL INJECTION DETECTED IN SETTLEMENT LOGIC.', code: '       PROCEDURE DIVISION.\n           STRING "SELECT * FROM LEDGER" INTO SQL-CMD.' },
-            atm: { desc: 'HARDCODED MASTER KEY FOUND.', code: '       01 M-KEY PIC X(16) VALUE "OVERRIDE_8822".' }
+            vulnerable: { desc: 'DETECTION: Unfiltered ACCEPT statements in transaction buffer. Potential logic injection detected.', code: '       IDENTIFICATION DIVISION.\n       PROGRAM-ID. RECON-ALPHA.\n       PROCEDURE DIVISION.\n           ACCEPT USER-INPUT.\n           STRING "UPDATE ACCOUNTS SET BAL = 0 WHERE ID=" USER-INPUT INTO SQL-STR.' },
+            atm: { desc: 'DETECTION: Master hardcoded credentials found in ATM-CORE Working Storage.', code: '       WORKING-STORAGE SECTION.\n       01 MASTER-KEY PIC X(16) VALUE "ONYX_ADMIN_99".\n       01 SYSTEM-BYPASS PIC 9 VALUE 1.' }
         };
 
         function loadSample() {
