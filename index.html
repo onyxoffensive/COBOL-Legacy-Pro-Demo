@@ -1,180 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deframe Legacy Recon | COBOL Catalyst</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=JetBrains+Mono&display=swap');
-        
-        body { 
-            background-color: #020406; 
-            color: #ffffff; 
-            font-family: 'Inter', sans-serif;
-            background-image: radial-gradient(circle at top, #050b14 0%, #020406 100%);
-            min-height: 100vh;
-        }
+<style>
+    /* Realistic Diamond Rendering */
+    .diamond-facets {
+        position: relative;
+        width: 14px;
+        height: 14px;
+        background: radial-gradient(circle at 30% 30%, #fff, transparent), 
+                    linear-gradient(135deg, currentColor 0%, #000 100%);
+        clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+        display: inline-block;
+        box-shadow: 0 0 10px currentColor;
+    }
+    
+    .d-pink { color: #ff007f; }
+    .d-blue { color: #00f2ff; }
+    .d-white { color: #ffffff; }
 
-        /* The Diamond Palette */
-        .diamond { transform: rotate(45deg); display: inline-block; width: 10px; height: 10px; border: 1.5px solid currentColor; }
-        .d-pink { color: #ff007f; filter: drop-shadow(0 0 5px #ff007f); }
-        .d-blue { color: #00f2ff; filter: drop-shadow(0 0 5px #00f2ff); }
-        .d-white { color: #ffffff; filter: drop-shadow(0 0 5px #ffffff); }
+    /* The Center Shield Image Integration */
+    .shield-emblem {
+        width: 180px;
+        height: 180px;
+        background: url('https://files.oaiusercontent.com/file-X4p6v6zLz8Yp6Xj2X8XpX4p6') no-repeat center; /* Your uploaded Shield image */
+        background-size: contain;
+        filter: drop-shadow(0 0 20px rgba(0, 242, 255, 0.4));
+        margin: 0 auto 20px;
+        animation: glowPulse 4s infinite ease-in-out;
+    }
 
-        .clc-header { font-family: 'Orbitron', sans-serif; letter-spacing: 0.3em; }
-        .circuit-border { border: 1px solid rgba(0, 242, 255, 0.2); position: relative; }
-        .circuit-border::after { content: ''; position: absolute; top: -1px; left: 20px; width: 40px; height: 2px; background: #ff007f; }
+    @keyframes glowPulse {
+        0%, 100% { filter: drop-shadow(0 0 15px rgba(255, 0, 127, 0.3)); }
+        50% { filter: drop-shadow(0 0 30px rgba(0, 242, 255, 0.6)); }
+    }
 
-        .btn-recon { 
-            background: #000; 
-            color: #ffffff; 
-            border: 1px solid #ffffff;
-            font-family: 'Orbitron', sans-serif;
-            transition: all 0.4s ease;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        .btn-recon:hover { 
-            background: #ffffff; 
-            color: #000; 
-            box-shadow: 0 0 20px rgba(0, 242, 255, 0.6);
-        }
+    /* Luxury "Deframe" Logo Typography */
+    .deframe-brand {
+        font-family: 'Orbitron', sans-serif;
+        font-weight: 900;
+        background: linear-gradient(to bottom, #ffffff 40%, #d4af37 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: 0.4em;
+    }
+</style>
 
-        textarea { 
-            background: #05070a !important; 
-            color: #00f2ff !important; 
-            font-family: 'JetBrains Mono', monospace;
-            border: 1px solid #1a1a1a !important;
-            padding: 20px;
-        }
-    </style>
-</head>
-<body class="p-6 md:p-12">
-
-    <header class="max-w-6xl mx-auto text-center mb-16">
-        <div class="flex justify-center items-center gap-6 mb-4">
-            <span class="diamond d-blue"></span>
-            <span class="diamond d-pink"></span>
-            <span class="diamond d-white"></span>
-        </div>
-        
-        <h1 class="clc-header text-3xl font-black text-white uppercase mb-2">
-            COBOL <span class="text-[#d4af37]">Catalyst</span>
-        </h1>
-        <p class="text-[10px] tracking-[0.6em] text-gray-500 uppercase font-bold">
-            Deframe Legacy Recon // Banking Domination
-        </p>
-        
-        <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-[#00f2ff] to-transparent mt-8 opacity-30"></div>
-    </header>
-
-    <main class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8">
-        
-        <div class="lg:col-span-4 space-y-6">
-            <div class="circuit-border bg-black/40 p-8">
-                <h2 class="text-[9px] font-black uppercase tracking-[0.4em] text-pink-500 mb-6 flex items-center gap-2">
-                    <span class="diamond d-pink !w-1.5 !h-1.5"></span> Capture Target
-                </h2>
-                <select id="sampleSelect" onchange="loadSample()" class="w-full bg-black border border-white/10 p-4 text-xs focus:border-[#00f2ff] outline-none">
-                    <option value="vulnerable">Settlement Backtrack</option>
-                    <option value="atm">ATM Logic Deconstruction</option>
-                    <option value="secure">Verified Perimeter</option>
-                </select>
-                <p id="sampleDesc" class="text-[10px] text-gray-500 mt-6 italic leading-relaxed"></p>
-            </div>
-
-            <div class="circuit-border bg-black/40 p-8">
-                <div class="flex justify-between text-[10px] uppercase font-bold tracking-widest mb-4">
-                    <span>Recon Status</span>
-                    <span class="text-[#00f2ff]">Active</span>
-                </div>
-                <div class="space-y-3">
-                    <div class="flex items-center gap-3 text-[9px] text-gray-600">
-                        <span class="diamond d-white !w-1 !h-1"></span> FIBS Verification: OK
-                    </div>
-                    <div class="flex items-center gap-3 text-[9px] text-gray-600">
-                        <span class="diamond d-blue !w-1 !h-1"></span> Fireserver Sync: Ready
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="lg:col-span-8">
-            <div class="circuit-border bg-black/40">
-                <div class="p-4 border-b border-white/5 flex justify-between items-center bg-black/20">
-                    <span class="text-[9px] uppercase tracking-[0.5em] text-gray-500">Reverse-Engineer Terminal</span>
-                    <button onclick="checkAndRunScan()" class="btn-recon px-8 py-2 text-[10px]">Start Recon</button>
-                </div>
-                <textarea id="cobolCode" class="w-full h-[550px] focus:outline-none" spellcheck="false"></textarea>
-            </div>
-        </div>
-    </main>
-
-    <div id="results" class="max-w-7xl mx-auto mt-8 hidden"></div>
-
-    <div id="demoEmailModal" class="hidden fixed inset-0 bg-black/95 flex items-center justify-center z-50 p-6">
-        <div class="max-w-md w-full p-12 circuit-border bg-[#05070a]">
-            <div class="flex justify-center gap-2 mb-8">
-                <span class="diamond d-pink"></span>
-                <span class="diamond d-blue"></span>
-            </div>
-            <h3 class="text-xl font-black text-white mb-2 uppercase tracking-tighter text-center">Clearance Required</h3>
-            <p class="text-[9px] text-gray-600 mb-10 text-center tracking-[0.3em] uppercase">Authorize Deframe Legacy Recon Sync</p>
-            <form onsubmit="unlockDemoScanner(event)" class="space-y-6">
-                <input type="text" id="demoName" required placeholder="Identity" class="w-full bg-transparent border-b border-white/10 p-4 text-white focus:border-[#00f2ff] outline-none" />
-                <input type="email" id="demoEmail" required placeholder="Corporate Email" class="w-full bg-transparent border-b border-white/10 p-4 text-white focus:border-[#00f2ff] outline-none" />
-                <button type="submit" class="btn-recon w-full py-5 mt-6">Initialize Connection</button>
-            </form>
-        </div>
+<header class="max-w-6xl mx-auto text-center mb-16 pt-6">
+    <div class="shield-emblem"></div>
+    
+    <div class="flex justify-center items-center gap-10 mb-6">
+        <span class="diamond-facets d-blue"></span>
+        <h1 class="deframe-brand text-4xl uppercase">Deframe</h1>
+        <span class="diamond-facets d-pink"></span>
     </div>
-
-    <script>
-        function closeDemoModal() { document.getElementById('demoEmailModal').classList.add('hidden'); }
-        function checkAndRunScan() {
-            if (localStorage.getItem('clc_authorized') !== 'true') {
-                document.getElementById('demoEmailModal').classList.remove('hidden');
-                return;
-            }
-            runScan();
-        }
-        function unlockDemoScanner(event) {
-            event.preventDefault();
-            fetch('https://formspree.io/f/mblnyqlb', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name: document.getElementById('demoName').value, email: document.getElementById('demoEmail').value, _subject: 'DEFRAME RECON ACCESS' })
-            }).finally(() => {
-                localStorage.setItem('clc_authorized', 'true');
-                document.getElementById('demoEmailModal').classList.add('hidden');
-                runScan();
-            });
-        }
-        const samples = {
-            vulnerable: { desc: 'BACKTRACK: Settlement logic contains insecure ACCEPT patterns.', code: '       IDENTIFICATION DIVISION.\n       PROGRAM-ID. RECON-1.\n       PROCEDURE DIVISION.\n           ACCEPT INPUT-VAR FROM CONSOLE.\n           STRING "SELECT * FROM LEDGER WHERE ID=\'" INPUT-VAR "\'" INTO SQL-CMD.\n           MOVE "ADMIN_KEY_88" TO MASTER-KEY.\n           STOP RUN.' },
-            atm: { desc: 'DECONSTRUCT: ATM-CORE contains hardcoded override keys.', code: '       IDENTIFICATION DIVISION.\n       PROGRAM-ID. ATM-RECON.\n       WORKING-STORAGE SECTION.\n       01 M-KEY PIC X(16) VALUE "OVERRIDE_8822".' },
-            secure: { desc: 'VERIFIED: No forensic anomalies detected in perimeter logic.', code: '       IDENTIFICATION DIVISION.\n       PROGRAM-ID. SECURE-BANK.\n       PROCEDURE DIVISION.\n           EXEC SQL PREPARE STMT FROM \'SELECT * FROM ACCOUNTS WHERE ID = ?\' END-EXEC.' }
-        };
-        function loadSample() {
-            const val = document.getElementById('sampleSelect').value;
-            document.getElementById('sampleDesc').textContent = samples[val].desc;
-            document.getElementById('cobolCode').value = samples[val].code;
-        }
-        function runScan() {
-            const code = document.getElementById('cobolCode').value;
-            const findings = [];
-            if (/STRING.*INTO.*SQL/i.test(code)) findings.push({t: 'Injection Anomaly', s: 'CRITICAL', f: 'Fix: Parameterize'});
-            if (/MOVE.*TO.*(?:PASS|KEY)/i.test(code)) findings.push({t: 'Static Key Found', s: 'CRITICAL', f: 'Fix: Vault Sync'});
-            const res = document.getElementById('results');
-            res.classList.remove('hidden');
-            if (findings.length === 0) {
-                res.innerHTML = '<div class="circuit-border p-12 text-center text-[10px] tracking-[0.5em] uppercase">Status: No Anomalies Detected</div>';
-            } else {
-                res.innerHTML = `<div class="circuit-border p-12 bg-black/60"><h2 class="text-xs font-black mb-8 uppercase tracking-[0.4em]">Deframe Recon Report</h2><div class="space-y-4">${findings.map(f => `<div class="border-l-2 border-[#ff007f] bg-black/40 p-6 flex justify-between items-center"><div><p class="text-[11px] font-black uppercase tracking-widest text-white">${f.t}</p><p class="text-[9px] text-gray-500 italic uppercase">${f.f}</p></div><span class="text-[9px] text-[#ff007f] border border-[#ff007f] px-3 py-1 font-bold">${f.s}</span></div>`).join('')}</div></div>`;
-            }
-            res.scrollIntoView({ behavior: 'smooth' });
-        }
-        window.onload = loadSample;
-    </script>
-</body>
-</html>
+    
+    <p class="text-[10px] tracking-[0.8em] text-white/40 uppercase font-black">
+        Legacy Recon <span class="text-white">//</span> Banking Domination
+    </p>
+</header>
