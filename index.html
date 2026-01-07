@@ -1,57 +1,271 @@
-<style>
-    /* Realistic Diamond Rendering */
-    .diamond-facets {
-        position: relative;
-        width: 14px;
-        height: 14px;
-        background: radial-gradient(circle at 30% 30%, #fff, transparent), 
-                    linear-gradient(135deg, currentColor 0%, #000 100%);
-        clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-        display: inline-block;
-        box-shadow: 0 0 10px currentColor;
-    }
-    
-    .d-pink { color: #ff007f; }
-    .d-blue { color: #00f2ff; }
-    .d-white { color: #ffffff; }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deframe Legacy Recon | COBOL Catalyst</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=JetBrains+Mono&display=swap');
+        
+        body { 
+            background-color: #020406; 
+            color: #ffffff; 
+            font-family: 'Inter', sans-serif;
+            background-image: radial-gradient(circle at top, #050b14 0%, #020406 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
 
-    /* The Center Shield Image Integration */
-    .shield-emblem {
-        width: 180px;
-        height: 180px;
-        background: url('https://files.oaiusercontent.com/file-X4p6v6zLz8Yp6Xj2X8XpX4p6') no-repeat center; /* Your uploaded Shield image */
-        background-size: contain;
-        filter: drop-shadow(0 0 20px rgba(0, 242, 255, 0.4));
-        margin: 0 auto 20px;
-        animation: glowPulse 4s infinite ease-in-out;
-    }
+        /* High-End Faceted Diamonds */
+        .diamond-facets {
+            position: relative;
+            width: 16px;
+            height: 16px;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8), transparent), 
+                        linear-gradient(135deg, currentColor 0%, #000 100%);
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            display: inline-block;
+            filter: drop-shadow(0 0 8px currentColor);
+        }
+        
+        .d-pink { color: #ff007f; }
+        .d-blue { color: #00f2ff; }
+        .d-white { color: #ffffff; }
 
-    @keyframes glowPulse {
-        0%, 100% { filter: drop-shadow(0 0 15px rgba(255, 0, 127, 0.3)); }
-        50% { filter: drop-shadow(0 0 30px rgba(0, 242, 255, 0.6)); }
-    }
+        /* Banking Domination Shield Emblem */
+        .shield-emblem {
+            width: 220px;
+            height: 220px;
+            /* Placeholder for your uploaded image - can be replaced with the direct URL */
+            background: url('https://raw.githubusercontent.com/onyxoffensive/wraith20/main/Gemini_Generated_Image_gysivggysivggysi.jpg') no-repeat center; 
+            background-size: contain;
+            filter: drop-shadow(0 0 25px rgba(0, 242, 255, 0.3));
+            margin: 0 auto 10px;
+            animation: glowPulse 5s infinite ease-in-out;
+        }
 
-    /* Luxury "Deframe" Logo Typography */
-    .deframe-brand {
-        font-family: 'Orbitron', sans-serif;
-        font-weight: 900;
-        background: linear-gradient(to bottom, #ffffff 40%, #d4af37 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        letter-spacing: 0.4em;
-    }
-</style>
+        @keyframes glowPulse {
+            0%, 100% { filter: drop-shadow(0 0 15px rgba(255, 0, 127, 0.4)); transform: scale(1); }
+            50% { filter: drop-shadow(0 0 35px rgba(0, 242, 255, 0.6)); transform: scale(1.02); }
+        }
 
-<header class="max-w-6xl mx-auto text-center mb-16 pt-6">
-    <div class="shield-emblem"></div>
-    
-    <div class="flex justify-center items-center gap-10 mb-6">
-        <span class="diamond-facets d-blue"></span>
-        <h1 class="deframe-brand text-4xl uppercase">Deframe</h1>
-        <span class="diamond-facets d-pink"></span>
+        /* Branding Typography */
+        .deframe-brand {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            background: linear-gradient(to bottom, #ffffff 30%, #d4af37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 0.5em;
+            text-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        .circuit-panel {
+            background: rgba(10, 15, 25, 0.7);
+            border: 1px solid rgba(0, 242, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        .circuit-panel::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 50px;
+            width: 30px;
+            height: 2px;
+            background: #ff007f;
+            box-shadow: 0 0 10px #ff007f;
+        }
+
+        .btn-recon { 
+            background: #000; 
+            color: #ffffff; 
+            border: 1px solid #ffffff;
+            font-family: 'Orbitron', sans-serif;
+            transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        .btn-recon:hover { 
+            background: #ffffff; 
+            color: #000; 
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        textarea { 
+            background: #05070a !important; 
+            color: #00f2ff !important; 
+            font-family: 'JetBrains Mono', monospace;
+            border: 1px solid #1a1a1a !important;
+            padding: 25px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body class="p-6 md:p-12">
+
+    <header class="max-w-6xl mx-auto text-center mb-16">
+        <div class="shield-emblem"></div>
+        
+        <div class="flex justify-center items-center gap-8 mb-6">
+            <span class="diamond-facets d-blue"></span>
+            <h1 class="deframe-brand text-4xl uppercase ml-4">Deframe</h1>
+            <span class="diamond-facets d-pink"></span>
+        </div>
+        
+        <p class="text-[10px] tracking-[0.8em] text-white/40 uppercase font-black">
+            Legacy Recon <span class="text-white">//</span> Banking Domination
+        </p>
+    </header>
+
+    <main class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10">
+        
+        <div class="lg:col-span-4 space-y-8">
+            <div class="circuit-panel p-8">
+                <h2 class="text-[9px] font-black uppercase tracking-[0.4em] text-pink-500 mb-8 flex items-center gap-3">
+                    <span class="diamond-facets d-white !w-2 !h-2"></span> Module Selection
+                </h2>
+                <select id="sampleSelect" onchange="loadSample()" class="w-full bg-black border border-white/5 p-4 text-xs text-gray-400 focus:border-[#00f2ff] outline-none transition">
+                    <option value="vulnerable">Settlement Backtrack</option>
+                    <option value="atm">ATM Logic Deconstruction</option>
+                    <option value="secure">Hardened Perimeter</option>
+                </select>
+                <div class="mt-8 p-4 bg-black/40 border-l border-pink-500">
+                    <p id="sampleDesc" class="text-[10px] text-gray-400 italic leading-relaxed"></p>
+                </div>
+            </div>
+
+            <div class="circuit-panel p-8">
+                <div class="flex justify-between items-center mb-6">
+                    <span class="text-[9px] uppercase tracking-widest text-gray-500 font-bold">Sync Status</span>
+                    <div class="flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-[#00f2ff] animate-pulse"></span>
+                        <span class="text-[9px] font-mono text-[#00f2ff]">CONNECTED</span>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between text-[9px] text-gray-400 border-b border-white/5 pb-2">
+                        <span>Recon ID</span>
+                        <span class="text-white">ONX-9921</span>
+                    </div>
+                    <div class="flex items-center justify-between text-[9px] text-gray-400">
+                        <span>Target Ledger</span>
+                        <span class="text-white uppercase">Mainframe-X</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="lg:col-span-8">
+            <div class="circuit-panel overflow-hidden">
+                <div class="px-8 py-5 border-b border-white/5 flex justify-between items-center bg-black/30">
+                    <div class="flex items-center gap-3">
+                        <span class="diamond-facets d-blue !w-2 !h-2"></span>
+                        <span class="text-[9px] uppercase tracking-[0.4em] text-gray-400">Forensic Source</span>
+                    </div>
+                    <button onclick="checkAndRunScan()" class="btn-recon px-10 py-3 text-[10px]">Execute Recon</button>
+                </div>
+                <textarea id="cobolCode" class="w-full h-[600px] focus:outline-none" spellcheck="false"></textarea>
+            </div>
+        </div>
+    </main>
+
+    <div id="results" class="max-w-7xl mx-auto mt-10 hidden"></div>
+
+    <div id="demoEmailModal" class="hidden fixed inset-0 bg-black/98 flex items-center justify-center z-50 p-6">
+        <div class="max-w-md w-full p-12 circuit-panel bg-[#05070a] border-t-2 border-pink-500 shadow-2xl">
+            <div class="flex justify-center gap-4 mb-10">
+                <span class="diamond-facets d-white"></span>
+                <span class="diamond-facets d-pink scale-150"></span>
+                <span class="diamond-facets d-blue"></span>
+            </div>
+            <h3 class="text-2xl font-black text-white mb-2 uppercase tracking-tighter text-center">Protocol Access</h3>
+            <p class="text-[9px] text-gray-500 mb-12 text-center tracking-[0.4em] uppercase">Deframe Sync Protocol v4.0</p>
+            <form onsubmit="unlockDemoScanner(event)" class="space-y-8">
+                <input type="text" id="demoName" required placeholder="Authorized Name" class="w-full bg-transparent border-b border-white/10 p-4 text-white focus:border-[#00f2ff] outline-none font-mono text-xs uppercase" />
+                <input type="email" id="demoEmail" required placeholder="Corporate Email" class="w-full bg-transparent border-b border-white/10 p-4 text-white focus:border-[#00f2ff] outline-none font-mono text-xs uppercase" />
+                <button type="submit" class="btn-recon w-full py-5 mt-4">Initialize Sync</button>
+            </form>
+        </div>
     </div>
-    
-    <p class="text-[10px] tracking-[0.8em] text-white/40 uppercase font-black">
-        Legacy Recon <span class="text-white">//</span> Banking Domination
-    </p>
-</header>
+
+    <script>
+        function checkAndRunScan() {
+            if (localStorage.getItem('clc_authorized') !== 'true') {
+                document.getElementById('demoEmailModal').classList.remove('hidden');
+                return;
+            }
+            runScan();
+        }
+
+        function unlockDemoScanner(event) {
+            event.preventDefault();
+            const name = document.getElementById('demoName').value;
+            const email = document.getElementById('demoEmail').value;
+            
+            fetch('https://formspree.io/f/mblnyqlb', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    name: name, 
+                    email: email, 
+                    _subject: 'NEW DEFRAME RECON LEAD',
+                    identity: 'onyx.offensive@protonmail.com'
+                })
+            }).finally(() => {
+                localStorage.setItem('clc_authorized', 'true');
+                document.getElementById('demoEmailModal').classList.add('hidden');
+                runScan();
+            });
+        }
+
+        const samples = {
+            vulnerable: { desc: 'DEFRAME ALERT: Insecure SQL generation detected in settlement back-end. Trace initiated.', code: '       IDENTIFICATION DIVISION.\n       PROGRAM-ID. RECON-1.\n       PROCEDURE DIVISION.\n           ACCEPT INPUT-VAR FROM CONSOLE.\n           STRING "SELECT * FROM LEDGER WHERE ID=\'" INPUT-VAR "\'" INTO SQL-CMD.\n           MOVE "ADMIN_KEY_882" TO MASTER-KEY.\n           DISPLAY "PII_LEAK: " SSN-NUM.\n           STOP RUN.' },
+            atm: { desc: 'DEFRAME ALERT: Static master key hardcoded in withdrawal procedure division.', code: '       IDENTIFICATION DIVISION.\n       PROGRAM-ID. ATM-RECON.\n       WORKING-STORAGE SECTION.\n       01 M-KEY PIC X(16) VALUE "OVERRIDE_8822".\n       PROCEDURE DIVISION.\n           IF PIN = M-KEY THEN PERFORM DISPENSE.' },
+            secure: { desc: 'INTEGRITY PASS: No forensic anomalies detected. Code follows parameterized standards.', code: '       IDENTIFICATION DIVISION.\n       PROGRAM-ID. SECURE-BANK.\n       PROCEDURE DIVISION.\n           EXEC SQL PREPARE STMT FROM \'SELECT * FROM ACCOUNTS WHERE ID = ?\' END-EXEC.' }
+        };
+
+        function loadSample() {
+            const val = document.getElementById('sampleSelect').value;
+            document.getElementById('sampleDesc').textContent = samples[val].desc;
+            document.getElementById('cobolCode').value = samples[val].code;
+        }
+
+        function runScan() {
+            const code = document.getElementById('cobolCode').value;
+            const findings = [];
+            if (/STRING.*INTO.*SQL/i.test(code)) findings.push({t: 'Logic Injection Path', s: 'CRITICAL', f: 'Recommendation: Implement DB2 Host Variables'});
+            if (/MOVE.*TO.*(?:PASS|KEY)/i.test(code)) findings.push({t: 'Administrative Key Leak', s: 'CRITICAL', f: 'Recommendation: Move to External Vault Sync'});
+            if (/DISPLAY.*(?:SSN|CREDIT|PII)/i.test(code)) findings.push({t: 'Data Exposure Point', s: 'HIGH', f: 'Recommendation: Mask Field Output'});
+            
+            const res = document.getElementById('results');
+            res.classList.remove('hidden');
+            if (findings.length === 0) {
+                res.innerHTML = '<div class="circuit-panel p-16 text-center text-[10px] tracking-[0.8em] uppercase text-white/50 animate-pulse">Integrity Verified // No Anomalies Detected</div>';
+            } else {
+                res.innerHTML = `
+                    <div class="circuit-panel p-12">
+                        <h2 class="text-xs font-black mb-10 uppercase tracking-[0.5em] text-white">Forensic Recon Report</h2>
+                        <div class="space-y-6">
+                            ${findings.map(f => `
+                                <div class="border-l-4 border-pink-500 bg-black/40 p-8 flex justify-between items-center group hover:bg-black/60 transition">
+                                    <div>
+                                        <p class="text-[12px] font-black uppercase tracking-widest text-white">${f.t}</p>
+                                        <p class="text-[9px] text-gray-500 mt-2 font-mono uppercase italic">${f.f}</p>
+                                    </div>
+                                    <span class="text-[10px] text-pink-500 border border-pink-500 px-5 py-2 font-bold uppercase">${f.s}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>`;
+            }
+            res.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        window.onload = loadSample;
+    </script>
+</body>
+</html>
