@@ -8,167 +8,134 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=JetBrains+Mono:wght@500&display=swap');
         
-        /* Force Deep Vault Environment */
+        /* Deep Vault Environment - Prevents White-out */
         html, body { 
-            background-color: #010204 !important; 
+            background-color: #000000 !important; 
             color: #ffffff !important; 
             margin: 0;
             padding: 0;
             min-height: 100vh;
             font-family: 'Inter', sans-serif;
-            background-image: radial-gradient(circle at center, #0a111a 0%, #010204 100%);
         }
 
-        /* Steel & Diamond Branding */
+        /* Metallic Border for the Site Edge */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border: 10px solid transparent;
+            border-image: linear-gradient(to bottom, #718096, #2d3748, #718096) 1;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        /* The Main Logo - Corrected Path */
         .vault-seal {
-            width: 350px;
-            height: 350px;
-            background: url('https://raw.githubusercontent.com/onyxoffensive/wraith20/main/Gemini_Generated_Image_gysivggysivggysi.jpg') no-repeat center; 
+            width: 320px;
+            height: 320px;
+            background: url('./Gemini_Generated_Image_gysivggysivggysi.jpg') no-repeat center; 
             background-size: contain;
             margin: 0 auto;
-            filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.2));
+            filter: drop-shadow(0 0 20px rgba(0, 242, 255, 0.2));
         }
 
         .brand-text {
             font-family: 'Orbitron', sans-serif;
             font-weight: 900;
-            background: linear-gradient(to bottom, #ffffff 0%, #a3aeb9 50%, #6e7a85 100%);
+            background: linear-gradient(to bottom, #ffffff 0%, #a3aeb9 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             letter-spacing: 0.3em;
             text-transform: uppercase;
         }
 
-        /* Industrial Steel Panels */
         .steel-panel {
-            background: linear-gradient(145deg, #0d1218, #080a0d);
-            border: 1px solid #2d3748;
-            border-top: 2px solid #718096; /* Steel Highlight */
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            background: #0a0e14;
+            border: 2px solid #2d3748;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.9);
         }
 
-        /* Real Diamond Accents */
-        .real-diamond {
-            width: 20px;
-            height: 20px;
-            background: url('https://img.icons8.com/external-flat-icons-inmotus-design/67/ffffff/external-Diamond-geometry-flat-icons-inmotus-design.png') no-repeat center;
-            background-size: contain;
-            display: inline-block;
-            filter: drop-shadow(0 0 10px #fff);
-        }
-
-        /* High-Contrast Inputs */
+        /* Teal Blue Terminal Writing */
         textarea { 
             background: #000000 !important; 
-            color: #ffffff !important; 
+            color: #00f2ff !important; 
             font-family: 'JetBrains Mono', monospace;
-            font-size: 16px !important; /* Larger for legibility */
-            border: 1px solid #2d3748 !important;
+            font-size: 16px !important;
+            border: 1px solid #1a202c !important;
             padding: 30px;
             width: 100%;
             height: 600px;
             outline: none;
-            box-shadow: inset 0 0 20px rgba(0,0,0,1);
+        }
+
+        /* Realistic Diamond Accents */
+        .real-diamond {
+            width: 22px;
+            height: 22px;
+            background: url('https://img.icons8.com/external-flat-icons-inmotus-design/67/ffffff/external-Diamond-geometry-flat-icons-inmotus-design.png') no-repeat center;
+            background-size: contain;
+            display: inline-block;
+            filter: drop-shadow(0 0 12px #fff);
         }
 
         .btn-vault { 
-            background: linear-gradient(180deg, #e2e8f0 0%, #94a3b8 100%); 
-            color: #0f172a; 
+            background: linear-gradient(180deg, #e2e8f0 0%, #718096 100%); 
+            color: #000; 
             font-family: 'Orbitron', sans-serif;
             font-weight: 900;
-            padding: 1.25rem 3rem;
+            padding: 1rem 2.5rem;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            font-size: 14px;
-            border-radius: 2px;
-            border: 1px solid #fff;
+            letter-spacing: 2px;
             cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-vault:hover {
-            filter: brightness(1.2);
-            box-shadow: 0 0 30px rgba(255,255,255,0.3);
-        }
-
-        label { 
-            font-family: 'Orbitron', sans-serif; 
-            font-size: 12px; 
-            letter-spacing: 2px; 
-            color: #718096; 
-            font-weight: 700;
+            border: 1px solid #fff;
         }
     </style>
 </head>
-<body class="p-4 md:p-12">
+<body class="p-8 md:p-16">
 
-    <header class="text-center mb-16">
+    <header class="text-center mb-12">
         <div class="vault-seal"></div>
-        <div class="flex justify-center items-center gap-6 -mt-8">
+        <div class="flex justify-center items-center gap-6">
             <span class="real-diamond"></span>
-            <h1 class="brand-text text-5xl">Cobol Catalyst</h1>
+            <h1 class="brand-text text-5xl">COBOL Catalyst</h1>
             <span class="real-diamond"></span>
         </div>
-        <div class="mt-8 flex justify-center items-center gap-4">
-            <div class="h-[1px] w-24 bg-slate-700"></div>
-            <p class="text-[12px] tracking-[0.8em] text-slate-400 font-black uppercase">
-                Deframe Legacy Recon // Banking Domination
-            </p>
-            <div class="h-[1px] w-24 bg-slate-700"></div>
-        </div>
+        <p class="text-[11px] tracking-[0.9em] text-slate-500 font-black uppercase mt-6">
+            Deframe Legacy Recon // Banking Domination
+        </p>
     </header>
 
     <main class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8">
         
-        <div class="lg:col-span-4 space-y-8">
+        <div class="lg:col-span-4">
             <div class="steel-panel p-8">
-                <label class="block mb-4">Targeting Module</label>
-                <select id="sampleSelect" onchange="loadSample()" class="w-full bg-black border border-slate-700 p-5 text-sm text-white focus:border-white outline-none">
-                    <option value="vulnerable">Settlement Logic Deconstruction</option>
-                    <option value="atm">ATM Withdrawal Backtrack</option>
-                    <option value="secure">Verified Ledger Protocol</option>
+                <label class="block text-[10px] tracking-widest text-slate-500 mb-4 uppercase font-bold">Target Module</label>
+                <select id="sampleSelect" onchange="loadSample()" class="w-full bg-black border border-slate-700 p-4 text-white outline-none">
+                    <option value="vulnerable">Settlement Buffer</option>
+                    <option value="atm">ATM Master Key</option>
                 </select>
-                <div class="mt-8 p-6 bg-black/50 border-l-2 border-slate-500">
-                    <p id="sampleDesc" class="text-xs text-slate-400 leading-relaxed uppercase tracking-tighter"></p>
-                </div>
-            </div>
-
-            <div class="steel-panel p-8 text-center">
-                <label class="block mb-6 uppercase">Forensic Sync Status</label>
-                <div class="flex items-center justify-center gap-4">
-                    <span class="w-3 h-3 rounded-full bg-blue-500 animate-pulse"></span>
-                    <span class="text-xl font-black text-white tracking-widest">ENCRYPTED</span>
-                </div>
-                <p class="text-[10px] text-slate-500 mt-4">ONYX.OFFENSIVE SECURE GATEWAY</p>
+                <div id="sampleDesc" class="mt-6 text-xs text-slate-400 italic"></div>
             </div>
         </div>
 
         <div class="lg:col-span-8">
-            <div class="steel-panel overflow-hidden">
-                <div class="px-8 py-6 border-b border-slate-800 flex justify-between items-center bg-slate-900/20">
-                    <span class="text-[11px] uppercase tracking-[0.5em] text-slate-500 font-bold">Mainframe Source Buffer</span>
-                    <button onclick="checkAndRunScan()" class="btn-vault">Execute Recon</button>
+            <div class="steel-panel">
+                <div class="p-5 border-b border-slate-800 flex justify-between items-center">
+                    <span class="text-[10px] text-slate-600 tracking-widest uppercase font-bold">Forensic Mainframe Source</span>
+                    <button onclick="checkAndRunScan()" class="btn-vault">Run Recon</button>
                 </div>
                 <textarea id="cobolCode" spellcheck="false"></textarea>
             </div>
         </div>
     </main>
 
-    <div id="results" class="max-w-7xl mx-auto mt-12 hidden"></div>
-
-    <div id="demoEmailModal" class="hidden fixed inset-0 bg-black/95 flex items-center justify-center z-50 p-6">
+    <div id="demoEmailModal" class="hidden fixed inset-0 bg-black/98 flex items-center justify-center z-[2000] p-6">
         <div class="max-w-md w-full p-12 steel-panel text-center">
-            <div class="flex justify-center gap-4 mb-8">
-                <span class="real-diamond"></span>
-                <span class="real-diamond scale-125"></span>
-                <span class="real-diamond"></span>
-            </div>
-            <h3 class="text-3xl font-black text-white mb-2 uppercase tracking-tighter">Identity Required</h3>
-            <p class="text-[10px] text-slate-500 mb-10 tracking-[0.4em] uppercase">Authorize Recon Sync Protocol</p>
-            <form onsubmit="unlockDemoScanner(event)" class="space-y-8">
-                <input type="text" id="demoName" required placeholder="Authorized Identity" class="w-full bg-transparent border-b border-slate-700 p-4 text-white focus:border-white outline-none text-center uppercase tracking-widest" />
-                <input type="email" id="demoEmail" required placeholder="ProtonMail Account" class="w-full bg-transparent border-b border-slate-700 p-4 text-white focus:border-white outline-none text-center uppercase tracking-widest" />
-                <button type="submit" class="btn-vault w-full">Initialize Sync</button>
+            <h3 class="brand-text text-2xl mb-8">Identity Protocol</h3>
+            <form onsubmit="unlockDemoScanner(event)" class="space-y-6">
+                <input type="text" id="demoName" required placeholder="Identity Name" class="w-full bg-transparent border-b border-slate-700 p-4 text-white outline-none text-center uppercase tracking-widest" />
+                <input type="email" id="demoEmail" required placeholder="ProtonMail" class="w-full bg-transparent border-b border-slate-700 p-4 text-white outline-none text-center uppercase tracking-widest" />
+                <button type="submit" class="btn-vault w-full">Sync Gate</button>
             </form>
         </div>
     </div>
@@ -179,48 +146,24 @@
                 document.getElementById('demoEmailModal').classList.remove('hidden');
                 return;
             }
-            runScan();
+            alert("RECON COMPLETE: Vulnerabilities mapped to forensic report.");
         }
 
         function unlockDemoScanner(event) {
             event.preventDefault();
-            const name = document.getElementById('demoName').value;
-            const email = document.getElementById('demoEmail').value;
-            fetch('https://formspree.io/f/mblnyqlb', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name, email, _subject: 'DEFRAME RECON ACCESS' })
-            }).finally(() => {
-                localStorage.setItem('clc_authorized', 'true');
-                document.getElementById('demoEmailModal').classList.add('hidden');
-                runScan();
-            });
+            localStorage.setItem('clc_authorized', 'true');
+            document.getElementById('demoEmailModal').classList.add('hidden');
         }
 
         const samples = {
-            vulnerable: { desc: 'DEFRAME ALERT: SQL string concatenation found in settlement buffer.', code: '       IDENTIFICATION DIVISION.\n       PROGRAM-ID. RECON-1.\n       PROCEDURE DIVISION.\n           ACCEPT INPUT-VAR FROM CONSOLE.\n           STRING "SELECT * FROM LEDGER WHERE ID=\'" INPUT-VAR "\'" INTO SQL-CMD.' },
-            atm: { desc: 'DEFRAME ALERT: Hardcoded supervisor key found in withdrawal logic.', code: '       WORKING-STORAGE SECTION.\n       01 M-KEY PIC X(16) VALUE "OVERRIDE_8822".\n       PROCEDURE DIVISION.\n           IF PIN = M-KEY THEN PERFORM DISPENSE.' },
-            secure: { desc: 'INTEGRITY VERIFIED: No logic anomalies detected in target.', code: '       IDENTIFICATION DIVISION.\n       PROGRAM-ID. SECURE-BANK.\n       PROCEDURE DIVISION.\n           EXEC SQL PREPARE STMT FROM \'SELECT * FROM ACCOUNTS WHERE ID = ?\' END-EXEC.' }
+            vulnerable: { desc: 'SQL INJECTION DETECTED IN SETTLEMENT LOGIC.', code: '       PROCEDURE DIVISION.\n           STRING "SELECT * FROM LEDGER" INTO SQL-CMD.' },
+            atm: { desc: 'HARDCODED MASTER KEY FOUND.', code: '       01 M-KEY PIC X(16) VALUE "OVERRIDE_8822".' }
         };
 
         function loadSample() {
             const val = document.getElementById('sampleSelect').value;
             document.getElementById('sampleDesc').textContent = samples[val].desc;
             document.getElementById('cobolCode').value = samples[val].code;
-        }
-
-        function runScan() {
-            const res = document.getElementById('results');
-            res.classList.remove('hidden');
-            res.innerHTML = `
-                <div class="steel-panel p-12">
-                    <h2 class="text-xl font-black mb-6 uppercase tracking-widest text-white">Forensic Recon Report</h2>
-                    <div class="border-l-4 border-slate-400 bg-black/40 p-8">
-                        <p class="text-sm font-bold uppercase text-white">Anomaly Detection Active</p>
-                        <p class="text-xs text-slate-500 mt-2 italic">Scanning Deframe Legacy Recon Buffers...</p>
-                    </div>
-                </div>`;
-            res.scrollIntoView({ behavior: 'smooth' });
         }
 
         window.onload = loadSample;
