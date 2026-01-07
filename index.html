@@ -3,159 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COBOL Catalyst | Deframe Legacy Recon</title>
+    <title>COBOL Catalyst | Diamond Recon</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=JetBrains+Mono:wght@500&display=swap');
         
-        html, body { 
-            background-color: #000000 !important; 
-            color: #ffffff !important; 
-            margin: 0; padding: 0; min-height: 100vh;
-            font-family: 'Inter', sans-serif;
-        }
-
-        /* Industrial Bezel Frame */
-        body {
+        body { 
+            background: radial-gradient(circle at center, #0a111a 0%, #000000 100%);
+            color: #ffffff; margin: 0; min-height: 100vh; font-family: 'Orbitron', sans-serif;
             border: 15px solid #2d3748;
-            border-image: linear-gradient(to bottom, #718096, #1a202c, #4a5568) 1;
-            box-sizing: border-box;
+            border-image: linear-gradient(to bottom, #718096, #000, #718096) 1;
         }
 
-        /* LOGO REPAIR: Attempting multiple paths to ensure it shows */
-        .vault-seal {
-            width: 280px;
-            height: 280px;
-            background-image: url('Gemini_Generated_Image_gysivggysivggysi.jpg');
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: contain;
-            margin: 10px auto;
-            filter: drop-shadow(0 0 30px rgba(0, 242, 255, 0.4));
+        /* CSS DIAMOND VAULT SEAL */
+        .vault-container {
+            position: relative; width: 300px; height: 300px; margin: 40px auto;
+            border-radius: 50%; background: linear-gradient(145deg, #1a202c, #000);
+            border: 8px solid #4a5568; box-shadow: 0 0 50px rgba(255,255,255,0.1);
+            display: flex; align-items: center; justify-content: center;
         }
 
-        .brand-text {
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 900;
-            background: linear-gradient(to bottom, #ffffff, #94a3b8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
+        /* The Diamond Ring */
+        .diamond-ring {
+            position: absolute; width: 100%; height: 100%;
+            animation: rotate 60s linear infinite;
         }
 
-        .steel-panel {
-            background: #05070a;
-            border: 1px solid #2d3748;
-            box-shadow: inset 0 0 15px rgba(0,0,0,0.8);
-            display: flex;
-            flex-direction: column;
+        .diamond-stone {
+            position: absolute; width: 15px; height: 15px;
+            background: #fff; left: 50%; transform: translateX(-50%) rotate(45deg);
+            box-shadow: 0 0 15px #fff, 0 0 30px #00f2ff;
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
         }
 
-        .panel-header {
-            padding: 10px 15px;
-            background: rgba(45, 55, 72, 0.3);
-            border-bottom: 1px solid #2d3748;
-            font-size: 9px;
-            font-family: 'Orbitron';
-            letter-spacing: 2px;
-            color: #718096;
-            display: flex;
-            justify-content: space-between;
+        /* Generating the circle of diamonds */
+        .diamond-stone:nth-child(1) { top: 5px; }
+        .diamond-stone:nth-child(2) { bottom: 5px; }
+        .diamond-stone:nth-child(3) { left: 5px; top: 50%; transform: translateY(-50%) rotate(45deg); }
+        .diamond-stone:nth-child(4) { right: 5px; top: 50%; transform: translateY(-50%) rotate(45deg); }
+
+        .cc-logo {
+            font-size: 80px; font-weight: 900; color: #fff;
+            text-shadow: 0 0 20px rgba(0, 242, 255, 0.8), 2px 2px #4a5568;
+            z-index: 10;
         }
 
-        /* Terminal Styling */
-        textarea, .hex-view { 
-            background: #000000 !important; 
-            color: #00f2ff !important; 
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 13px !important;
-            border: none !important;
-            padding: 15px;
-            width: 100%;
-            height: 350px; 
-            outline: none;
-            text-shadow: 0 0 5px rgba(0, 242, 255, 0.5);
-            line-height: 1.5;
-            resize: none;
+        /* Control Panels */
+        .grid-box {
+            background: #05070a; border: 1px solid #2d3748;
+            box-shadow: inset 0 0 20px #000;
         }
 
-        .hex-view { color: #555; overflow: hidden; }
-
-        .btn-vault { 
-            background: #ffffff; color: #000; font-family: 'Orbitron';
-            font-weight: 900; padding: 10px 20px; text-transform: uppercase;
-            font-size: 11px; cursor: pointer; border: 1px solid #718096;
+        .panel-label {
+            font-size: 10px; letter-spacing: 3px; color: #718096;
+            padding: 10px; border-bottom: 1px solid #2d3748; background: #0a0e14;
         }
+
+        textarea {
+            background: #000 !important; color: #00f2ff !important;
+            font-family: 'JetBrains Mono'; font-size: 14px; padding: 20px;
+            width: 100%; height: 400px; border: none; outline: none;
+            text-shadow: 0 0 5px rgba(0, 242, 255, 0.5); line-height: 1.6;
+        }
+
+        /* Diamond Text for Bottom */
+        .diamond-catalyst {
+            font-size: 24px; font-weight: 900; text-align: center; margin-top: 50px;
+            background: linear-gradient(to bottom, #fff, #94a3b8);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 10px rgba(255,255,255,0.5); letter-spacing: 15px;
+        }
+
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
     </style>
 </head>
-<body class="p-4 lg:p-8">
+<body class="p-8">
 
-    <header class="text-center mb-8">
-        <div class="vault-seal"></div>
-        <h1 class="brand-text text-4xl">COBOL Catalyst</h1>
-        <p class="text-[9px] tracking-[1em] text-slate-500 font-bold mt-4 uppercase">Legacy Recon // Banking Domination</p>
+    <header class="text-center">
+        <div class="vault-container">
+            <div class="diamond-ring">
+                <div class="diamond-stone"></div><div class="diamond-stone"></div>
+                <div class="diamond-stone"></div><div class="diamond-stone"></div>
+            </div>
+            <div class="cc-logo">CC</div>
+        </div>
+        <h1 class="text-4xl font-black tracking-tighter uppercase">Cobol Catalyst</h1>
+        <p class="text-[10px] tracking-[1em] text-slate-500 mt-4">LEGACY RECON // BANKING DOMINATION</p>
     </header>
 
-    <main class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <main class="max-w-6xl mx-auto mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8">
         
-        <div class="steel-panel">
-            <div class="panel-header"><span>RECON_INTELLIGENCE_UNIT</span> <span class="text-blue-500">ACTIVE</span></div>
+        <div class="grid-box">
+            <div class="panel-label">RECON_MODULE_SELECT</div>
             <div class="p-6">
-                <select id="sampleSelect" onchange="loadSample()" class="w-full bg-black border border-slate-700 p-3 text-white text-sm mb-4 outline-none">
-                    <option value="vulnerable">01. SETTLEMENT_BUFFER_SCAN</option>
-                    <option value="atm">02. ATM_CORE_RECON</option>
+                <select id="sampleSelect" onchange="loadSample()" class="w-full bg-black border border-slate-700 p-4 text-white outline-none">
+                    <option value="settlement">01. SETTLEMENT_LOOPBACK</option>
+                    <option value="atm">02. ATM_MASTER_RECON</option>
                     <option value="ledger">03. LEDGER_INTEGRITY</option>
-                    <option value="network">04. GATEWAY_PERIMETER</option>
-                    <option value="forensic">05. MEMORY_HEX_DUMP</option>
+                    <option value="forensic">04. FORENSIC_MEMORY_DUMP</option>
+                    <option value="bypass">05. AUTH_BYPASS_LOGIC</option>
                 </select>
-                <div id="sampleDesc" class="text-[11px] text-slate-400 uppercase tracking-tighter leading-tight bg-black/40 p-4 border-l-2 border-slate-600">
-                    Initializing...
-                </div>
+                <div id="sampleDesc" class="mt-8 text-xs text-slate-400 border-l-2 border-slate-700 p-4 italic uppercase">Select target...</div>
             </div>
         </div>
 
-        <div class="steel-panel">
-            <div class="panel-header"><span>MAINFRAME_SOURCE_CODE</span> <button onclick="alert('SYNCING...')" class="text-white hover:text-cyan-400 transition-colors">EXECUTE</button></div>
+        <div class="grid-box">
+            <div class="panel-label">MAINFRAME_SOURCE_CODE</div>
             <textarea id="cobolCode" readonly></textarea>
         </div>
-
-        <div class="steel-panel">
-            <div class="panel-header"><span>FORENSIC_HEX_DUMP</span> <span>0x004F22</span></div>
-            <div class="hex-view">
-                000000 48 65 6C 6C 6F 20 57 6F 72 6C 64 21 00 00 00 00<br>
-                000010 4F 4E 59 58 2D 4F 46 46 45 4E 53 49 56 45 2D 30<br>
-                000020 31 20 44 45 46 52 41 4D 45 20 41 43 54 49 56 45<br>
-                000030 FF FF FF FF 00 11 22 33 44 55 66 77 88 99 AA BB<br>
-                000040 CC DD EE FF 01 02 03 04 05 06 07 08 09 0A 0B 0C
-            </div>
-        </div>
-
-        <div class="steel-panel">
-            <div class="panel-header"><span>NETWORK_LOGIC_TRACE</span> <span class="animate-pulse text-red-600">ENCRYPTED</span></div>
-            <div class="p-6 font-mono text-[10px] text-slate-500 space-y-2">
-                <div>> TRACING PACKET 192.168.1.104...</div>
-                <div class="text-slate-300">> [SUCCESS] BYPASSING COBOL-GATE_04...</div>
-                <div class="text-cyan-600">> [ALERT] SQL_STRING_CONCAT_DETECTED...</div>
-                <div>> [REPORT] LOGGING TO ONYX DATABASE...</div>
-            </div>
-        </div>
-
     </main>
+
+    <footer class="diamond-catalyst pb-20">
+        CATALYST
+    </footer>
 
     <script>
         const samples = {
-            vulnerable: { 
-                desc: 'DETECTED: Unmasked ACCEPT statements in settlement loop. Identifying SQL string concatenation path.', 
-                code: 'IDENTIFICATION DIVISION.\nPROGRAM-ID. SETTLE-BACK.\nDATA DIVISION.\nWORKING-STORAGE SECTION.\n01 USER-BUFFER PIC X(50).\n01 SQL-STMT PIC X(200).\n\nPROCEDURE DIVISION.\nMAIN.\n    ACCEPT USER-BUFFER.\n    STRING "SELECT * FROM LEDGER WHERE ID = \'" \n           USER-BUFFER \n           "\'" INTO SQL-STMT.\n    EXEC SQL EXECUTE :SQL-STMT END-EXEC.' 
-            },
-            atm: { 
-                desc: 'DETECTED: Hardcoded supervisor overrides and administrative bypass flags.', 
-                code: 'IDENTIFICATION DIVISION.\nPROGRAM-ID. ATM-RECON.\nWORKING-STORAGE SECTION.\n01 ADMIN-KEY PIC X(16) VALUE "ONYX-ADMIN-8822".\n\nPROCEDURE DIVISION.\nCHECK-PIN.\n    ACCEPT IN-PIN.\n    IF IN-PIN = "8822"\n        DISPLAY "ADMIN ACCESS GRANTED"\n        PERFORM DISPENSE-ALL.' 
-            },
-            ledger: { desc: 'VERIFYING: Block-level integrity across distributed ledgers.', code: 'READ LEDGER-FILE.\nIF HASH NOT = CALC-HASH\n    DISPLAY "TAMPER DETECTED".' },
-            network: { desc: 'AUDITING: Gateway ports and unauthenticated listeners.', code: 'ACCEPT PACKET FROM NET.\nIF SOURCE = "UNTRUSTED"\n    PERFORM LOG-ALERT.' },
-            forensic: { desc: 'DUMPING: Memory backtrack of transaction buffers.', code: 'DISPLAY HEX-VALUE OF WS-DATA.\nWRITE DUMP-FILE FROM MEM-MAP.' }
+            settlement: { desc: 'TRACING SQL CONCATENATION IN SETTLEMENT BUFFERS.', code: 'PROCEDURE DIVISION.\n   ACCEPT USER-INPUT.\n   STRING "SELECT * FROM LEDGER WHERE ID = \'" \n          USER-INPUT "\'" INTO SQL-STMT.\n   EXEC SQL EXECUTE :SQL-STMT END-EXEC.' },
+            atm: { desc: 'SCANNING FOR HARDCODED SUPERVISOR KEYS.', code: 'WORKING-STORAGE SECTION.\n01 ADMIN-KEY PIC X(16) VALUE "ONYX-ADMIN-8822".\n\nPROCEDURE DIVISION.\n   IF PIN = "8822" PERFORM DISPENSE-ALL.' },
+            ledger: { desc: 'VERIFYING BLOCK-LEVEL TRANSACTION INTEGRITY.', code: 'READ LEDGER-FILE.\nIF HASH NOT = CALCULATED-HASH\n   DISPLAY "TAMPER DETECTED AT BLOCK " BLOCK-ID.' },
+            forensic: { desc: 'INITIATING FULL HEXADECIMAL MEMORY BACKTRACK.', code: 'DISPLAY HEX-VALUE OF WORKING-STORAGE.\nWRITE DUMP-FILE FROM MEMORY-MAP.' },
+            bypass: { desc: 'DETECTING UNAUTHENTICATED GATEWAY ACCEPT PROTOCOLS.', code: 'ACCEPT PACKET FROM NETWORK-GATEWAY.\nIF SOURCE IS UNTRUSTED PERFORM LOG-ALARM.' }
         };
 
         function loadSample() {
