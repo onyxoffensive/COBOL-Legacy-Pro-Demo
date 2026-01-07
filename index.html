@@ -3,124 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COBOL Catalyst | Diamond Recon</title>
+    <title>COBOL Catalyst | Diamond Vault Recon</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=JetBrains+Mono:wght@500&display=swap');
         
         body { 
-            background: radial-gradient(circle at center, #0a111a 0%, #000000 100%);
+            background: radial-gradient(circle at center, #0f172a 0%, #000000 100%);
             color: #ffffff; margin: 0; min-height: 100vh; font-family: 'Orbitron', sans-serif;
             border: 15px solid #2d3748;
             border-image: linear-gradient(to bottom, #718096, #000, #718096) 1;
         }
 
-        /* CSS DIAMOND VAULT SEAL */
-        .vault-container {
-            position: relative; width: 300px; height: 300px; margin: 40px auto;
-            border-radius: 50%; background: linear-gradient(145deg, #1a202c, #000);
-            border: 8px solid #4a5568; box-shadow: 0 0 50px rgba(255,255,255,0.1);
+        /* TRIPLE RING DIAMOND VAULT */
+        .vault-core {
+            position: relative; width: 450px; height: 450px; margin: 40px auto;
+            border-radius: 50%; background: #000;
             display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 0 100px rgba(0, 242, 255, 0.1);
         }
 
-        /* The Diamond Ring */
-        .diamond-ring {
-            position: absolute; width: 100%; height: 100%;
-            animation: rotate 60s linear infinite;
+        .diamond {
+            position: absolute; width: 14px; height: 22px;
+            background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 50%, #94a3b8 100%);
+            clip-path: polygon(50% 0%, 100% 35%, 50% 100%, 0% 35%); /* Sharp Brilliant Cut */
+            box-shadow: 0 0 15px #fff;
+            filter: drop-shadow(0 0 5px rgba(255,255,255,0.8));
         }
 
-        .diamond-stone {
-            position: absolute; width: 15px; height: 15px;
-            background: #fff; left: 50%; transform: translateX(-50%) rotate(45deg);
-            box-shadow: 0 0 15px #fff, 0 0 30px #00f2ff;
-            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+        /* Outer Ring (24 Diamonds) */
+        .ring-1 { position: absolute; width: 100%; height: 100%; animation: rotate 40s linear infinite; }
+        /* Middle Ring (16 Diamonds) */
+        .ring-2 { position: absolute; width: 75%; height: 75%; animation: rotate-rev 30s linear infinite; }
+        /* Inner Ring (8 Diamonds) */
+        .ring-3 { position: absolute; width: 50%; height: 50%; animation: rotate 20s linear infinite; }
+
+        .cc-center {
+            font-size: 100px; font-weight: 900; color: #fff;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+            z-index: 50; letter-spacing: -5px;
         }
 
-        /* Generating the circle of diamonds */
-        .diamond-stone:nth-child(1) { top: 5px; }
-        .diamond-stone:nth-child(2) { bottom: 5px; }
-        .diamond-stone:nth-child(3) { left: 5px; top: 50%; transform: translateY(-50%) rotate(45deg); }
-        .diamond-stone:nth-child(4) { right: 5px; top: 50%; transform: translateY(-50%) rotate(45deg); }
-
-        .cc-logo {
-            font-size: 80px; font-weight: 900; color: #fff;
-            text-shadow: 0 0 20px rgba(0, 242, 255, 0.8), 2px 2px #4a5568;
-            z-index: 10;
-        }
-
-        /* Control Panels */
-        .grid-box {
+        /* Grid Layout */
+        .steel-box {
             background: #05070a; border: 1px solid #2d3748;
-            box-shadow: inset 0 0 20px #000;
+            box-shadow: inset 0 0 30px #000;
         }
 
-        .panel-label {
-            font-size: 10px; letter-spacing: 3px; color: #718096;
-            padding: 10px; border-bottom: 1px solid #2d3748; background: #0a0e14;
+        .label {
+            font-size: 11px; letter-spacing: 4px; color: #94a3b8;
+            padding: 12px; border-bottom: 1px solid #2d3748; background: #0a0f18;
+            font-weight: 900;
         }
 
         textarea {
             background: #000 !important; color: #00f2ff !important;
-            font-family: 'JetBrains Mono'; font-size: 14px; padding: 20px;
-            width: 100%; height: 400px; border: none; outline: none;
-            text-shadow: 0 0 5px rgba(0, 242, 255, 0.5); line-height: 1.6;
+            font-family: 'JetBrains Mono'; font-size: 15px; padding: 25px;
+            width: 100%; height: 500px; border: none; outline: none;
+            text-shadow: 0 0 10px rgba(0, 242, 255, 0.4); line-height: 1.7;
         }
 
-        /* Diamond Text for Bottom */
+        /* Diamond Catalyst Lettering */
         .diamond-catalyst {
-            font-size: 24px; font-weight: 900; text-align: center; margin-top: 50px;
-            background: linear-gradient(to bottom, #fff, #94a3b8);
+            font-size: 32px; font-weight: 900; text-align: center; margin: 60px 0;
+            background: linear-gradient(90deg, #fff, #94a3b8, #fff);
+            background-size: 200% auto;
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 10px rgba(255,255,255,0.5); letter-spacing: 15px;
+            animation: shine 3s linear infinite; letter-spacing: 20px;
         }
 
         @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes rotate-rev { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
+        @keyframes shine { to { background-position: 200% center; } }
     </style>
 </head>
 <body class="p-8">
 
     <header class="text-center">
-        <div class="vault-container">
-            <div class="diamond-ring">
-                <div class="diamond-stone"></div><div class="diamond-stone"></div>
-                <div class="diamond-stone"></div><div class="diamond-stone"></div>
+        <div class="vault-core" id="vault">
+            <div class="cc-center">CC</div>
             </div>
-            <div class="cc-logo">CC</div>
-        </div>
-        <h1 class="text-4xl font-black tracking-tighter uppercase">Cobol Catalyst</h1>
-        <p class="text-[10px] tracking-[1em] text-slate-500 mt-4">LEGACY RECON // BANKING DOMINATION</p>
+        <p class="text-[12px] tracking-[1.5em] text-slate-500 font-black mt-4 uppercase">Legacy Recon // Diamond Protocol</p>
     </header>
 
-    <main class="max-w-6xl mx-auto mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8">
-        
-        <div class="grid-box">
-            <div class="panel-label">RECON_MODULE_SELECT</div>
-            <div class="p-6">
-                <select id="sampleSelect" onchange="loadSample()" class="w-full bg-black border border-slate-700 p-4 text-white outline-none">
+    <main class="max-w-7xl mx-auto mt-16 grid grid-cols-1 lg:grid-cols-2 gap-10">
+        <div class="steel-box">
+            <div class="label">INTEL_TARGET_SELECTION</div>
+            <div class="p-8">
+                <select id="sampleSelect" onchange="loadSample()" class="w-full bg-black border border-slate-700 p-5 text-white font-bold outline-none mb-6">
                     <option value="settlement">01. SETTLEMENT_LOOPBACK</option>
                     <option value="atm">02. ATM_MASTER_RECON</option>
                     <option value="ledger">03. LEDGER_INTEGRITY</option>
                     <option value="forensic">04. FORENSIC_MEMORY_DUMP</option>
                     <option value="bypass">05. AUTH_BYPASS_LOGIC</option>
                 </select>
-                <div id="sampleDesc" class="mt-8 text-xs text-slate-400 border-l-2 border-slate-700 p-4 italic uppercase">Select target...</div>
+                <div id="sampleDesc" class="text-sm text-slate-400 border-l-4 border-white p-6 italic">...Awaiting Selection...</div>
             </div>
         </div>
 
-        <div class="grid-box">
-            <div class="panel-label">MAINFRAME_SOURCE_CODE</div>
+        <div class="steel-box">
+            <div class="label">MAINFRAME_SOURCE_CODE</div>
             <textarea id="cobolCode" readonly></textarea>
         </div>
     </main>
 
-    <footer class="diamond-catalyst pb-20">
-        CATALYST
-    </footer>
+    <div class="diamond-catalyst">CATALYST</div>
 
     <script>
+        // Generate the 3 Diamond Rings
+        const vault = document.getElementById('vault');
+        
+        function createRing(className, count, radius) {
+            const ring = document.createElement('div');
+            ring.className = className;
+            for (let i = 0; i < count; i++) {
+                const d = document.createElement('div');
+                d.className = 'diamond';
+                const angle = (i / count) * (Math.PI * 2);
+                const x = Math.cos(angle) * radius + 225 - 7;
+                const y = Math.sin(angle) * radius + 225 - 11;
+                d.style.left = x + 'px';
+                d.style.top = y + 'px';
+                d.style.transform = `rotate(${angle + Math.PI/2}rad)`;
+                ring.appendChild(d);
+            }
+            vault.appendChild(ring);
+        }
+
+        createRing('ring-1', 24, 200); // Outer
+        createRing('ring-2', 16, 140); // Middle
+        createRing('ring-3', 8, 85);   // Inner
+
         const samples = {
-            settlement: { desc: 'TRACING SQL CONCATENATION IN SETTLEMENT BUFFERS.', code: 'PROCEDURE DIVISION.\n   ACCEPT USER-INPUT.\n   STRING "SELECT * FROM LEDGER WHERE ID = \'" \n          USER-INPUT "\'" INTO SQL-STMT.\n   EXEC SQL EXECUTE :SQL-STMT END-EXEC.' },
-            atm: { desc: 'SCANNING FOR HARDCODED SUPERVISOR KEYS.', code: 'WORKING-STORAGE SECTION.\n01 ADMIN-KEY PIC X(16) VALUE "ONYX-ADMIN-8822".\n\nPROCEDURE DIVISION.\n   IF PIN = "8822" PERFORM DISPENSE-ALL.' },
+            settlement: { desc: 'TRACING SQL CONCATENATION IN SETTLEMENT BUFFERS.', code: 'IDENTIFICATION DIVISION.\nPROGRAM-ID. SETTLE-BACK.\nPROCEDURE DIVISION.\n   ACCEPT USER-INPUT.\n   STRING "SELECT * FROM LEDGER WHERE ID = \'" \n          USER-INPUT "\'" INTO SQL-STMT.\n   DISPLAY "EXECUTING: " SQL-STMT.\n   EXEC SQL EXECUTE :SQL-STMT END-EXEC.' },
+            atm: { desc: 'SCANNING FOR HARDCODED SUPERVISOR KEYS.', code: 'WORKING-STORAGE SECTION.\n01 ADMIN-KEY PIC X(16) VALUE "ONYX-ADMIN-8822".\n\nPROCEDURE DIVISION.\n   DISPLAY "INITIATING OVERRIDE CHECK...".\n   IF PIN = "8822" PERFORM DISPENSE-ALL.' },
             ledger: { desc: 'VERIFYING BLOCK-LEVEL TRANSACTION INTEGRITY.', code: 'READ LEDGER-FILE.\nIF HASH NOT = CALCULATED-HASH\n   DISPLAY "TAMPER DETECTED AT BLOCK " BLOCK-ID.' },
             forensic: { desc: 'INITIATING FULL HEXADECIMAL MEMORY BACKTRACK.', code: 'DISPLAY HEX-VALUE OF WORKING-STORAGE.\nWRITE DUMP-FILE FROM MEMORY-MAP.' },
             bypass: { desc: 'DETECTING UNAUTHENTICATED GATEWAY ACCEPT PROTOCOLS.', code: 'ACCEPT PACKET FROM NETWORK-GATEWAY.\nIF SOURCE IS UNTRUSTED PERFORM LOG-ALARM.' }
